@@ -150,5 +150,49 @@ public class Queries
 		return false;
 	}
 	
+	//metodo para devolver o preco da viajem recebendo o cod da viagem
+		public float getPrecoViagem(int cod_viagem)
+		{
+			float preco=0;
+			
+			String sql="select r.preco from viagem v,roteiro r Where v.cod_roteiro=r.cod_roteiro and v.cod_viagem=?";
+			ArrayList<Cidade> array=new ArrayList<>();
+			
+			try
+			{
+				PreparedStatement ps=Connections.getConexao().prepareStatement(sql);
+				ps.setInt(1,cod_viagem);
+				ResultSet rs=ps.executeQuery();
+				rs.next();
+				preco=rs.getFloat(1);
+			}
+			catch(SQLException s)
+			{
+				System.out.println(s.getMessage());
+			}
+			
+			return preco;
+		}
+		
+		//metodo para generico para verificar se existe um registro da tabela x com o codigo x
+		public boolean existeRegistro(String tabela,int cod)
+		{
+			String sql="Select cod_"+tabela+" from "+tabela+" where cod_"+tabela+"=?";
+			try
+			{
+				PreparedStatement ps=Connections.getConexao().prepareStatement(sql);
+				ps.setInt(1,cod);
+				ResultSet rs=ps.executeQuery();
+				return rs.next();
+				
+			}
+			catch(SQLException e)
+			{
+				System.out.println(e.getMessage());
+			}
+			
+			return false;
+		}
+	
 
 }

@@ -32,7 +32,7 @@ public class Valor_Obtido extends JFrame implements Fontes
 		valtL=new JLabel("Valor total Obtido: ");
 		valtL.setFont(fontBold);
 		
-		valt=new JLabel(""+c.calcularValorObtido());
+		valt=new JLabel(""+c.calcularLucro());
 		valt.setFont(fontItalicBold);
 		valt.setForeground(Color.GRAY);
 		valt.setBorder(BorderFactory.createLineBorder(Color.black));
