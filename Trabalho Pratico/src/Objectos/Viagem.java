@@ -1,4 +1,7 @@
 package Objectos;
+
+import Database.Queries;
+
 public class Viagem
 {
 	private int cod_viagem,cod_cliente,cod_roteiro;
@@ -60,6 +63,14 @@ public class Viagem
 
 	public void setData_marcacao(String data_marcacao) {
 		this.data_marcacao = data_marcacao;
+	}
+	
+	//metodo para buscar o preco da viagem
+	public float getPreco()
+	{
+		Queries q=new Queries();
+		
+		return q.getPrecoViagem(cod_viagem);
 	}
 
 	@Override
