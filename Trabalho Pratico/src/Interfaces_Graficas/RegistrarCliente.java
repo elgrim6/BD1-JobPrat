@@ -44,8 +44,9 @@ public class RegistrarCliente extends JFrame {
 							int n_cont=Integer.parseInt(textNCont.getText());
 							String email=textEmail.getText();
 							int cod_cliente=0;
+							String status="ACTIVO";
 							
-							Cliente a=new Cliente(cod_cliente,nome,email,n_cont);
+							Cliente a=new Cliente(cod_cliente,nome,email,n_cont,status);
 							Inserts.inserirCliente(a);
 							JOptionPane.showMessageDialog(null, "Operacao Sucedida!");
 						}

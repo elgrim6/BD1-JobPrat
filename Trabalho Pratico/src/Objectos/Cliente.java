@@ -3,13 +3,14 @@ package Objectos;
 public class Cliente 
 {
 	private int cod_cliente,n_cont;
-	private String nome,email;
+	private String nome,email,status;
 	
-	public Cliente(int cod_cliente, String nome, String email, int n_cont) {
+	public Cliente(int cod_cliente, String nome, String email, int n_cont, String status) {
 		this.cod_cliente = cod_cliente;
 		this.n_cont = n_cont;
 		this.nome = nome;
 		this.email = email;
+		this.status=status;
 	}
 
 	public int getCod_cliente() {
@@ -44,9 +45,20 @@ public class Cliente
 		this.email = email;
 	}
 
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	@Override
 	public String toString() {
 		return "Cliente [cod_cliente=" + cod_cliente + ", n_cont=" + n_cont + ", nome=" + nome + ", email=" + email
-				+ "]";
+				+ ", status=" + status + "]";
 	}
+
+	
+	
 }

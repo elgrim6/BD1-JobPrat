@@ -9,7 +9,7 @@ public class Inserts {
 	public static void inserirCliente(Cliente obj)
 	{
 		String sql="INSERT INTO cliente\r\n"
-				+ "    VALUES(id_cliente.NEXTVAL,'"+obj.getNome()+"','"+obj.getEmail()+"',"+obj.getN_cont()+")";
+				+ "    VALUES(id_cliente.NEXTVAL,'"+obj.getNome()+"','"+obj.getEmail()+"',"+obj.getN_cont()+",'"+obj.getStatus()+"')";
 		
 		try
 		{

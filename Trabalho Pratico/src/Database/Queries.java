@@ -12,7 +12,7 @@ public class Queries
 	//metodo para retornar todos clientes
 	public static ArrayList<Object> todosClientes()
 	{
-		String sql="select * from CLIENTE";
+		String sql="select * from CLIENTE order by 1";
 		ArrayList<Object> array=new ArrayList<>();
 		
 		try
@@ -27,8 +27,9 @@ public class Queries
 				String nome=rs.getString(2);
 				String email=rs.getString(3);
 				int n_cont=rs.getInt(4);
+				String status=rs.getString(5);
 				
-				array.add(new Cliente(cod_cliente,nome,email,n_cont));
+				array.add(new Cliente(cod_cliente,nome,email,n_cont,status));
 			}
 		}
 		catch(SQLException s)
