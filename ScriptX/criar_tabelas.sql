@@ -37,7 +37,6 @@ CREATE TABLE ROTEIRO (
     preco               NUMBER(8,2) NOT NULL CHECK(preco>=0),
     cd_partida          VARCHAR2(20) NOT NULL CHECK(cd_partida!=' '),
     cd_chegada          VARCHAR2(20) NOT NULL CHECK(cd_chegada!=' '),
-    descricao           VARCHAR2(73) NOT NULL CHECK(descricao!=' '),
     PRIMARY KEY (cod_roteiro)
 );
 CREATE TABLE VIAGEM_CIDADE (
@@ -61,6 +60,12 @@ CREATE TABLE LIGACAO(
 	distancia           NUMBER(6,2) NOT NULL CHECK(distancia>=0),
     PRIMARY KEY (cod_cidade,cod_cidade1)
 );
+CREATE TABLE LIGACAO_ROTEIRO(
+    cod_roteiro NUMBER(7) NOT NULL,
+    cod_cidade NUMBER(7) NOT NULL,
+    cod_cidade1 NUMBER(7) NOT NULL,
+    PRIMARY KEY (cod_roteiro,cod_cidade,cod_cidade1)
+);
 
 rem CHAVES ESTRANGEIRAS
 
@@ -83,6 +88,13 @@ ALTER TABLE VIAGEM_CIDADE
         ADD (FOREIGN KEY (cod_viagem) REFERENCES VIAGEM);
 ALTER TABLE VIAGEM_CIDADE
         ADD (FOREIGN KEY (cod_cidade) REFERENCES CIDADE);
+
+ALTER TABLE LIGACAO_ROTEIRO
+        ADD (FOREIGN KEY (cod_roteiro) REFERENCES ROTEIRO);
+ALTER TABLE LIGACAO_ROTEIRO
+        ADD (FOREIGN KEY (cod_cidade) REFERENCES LIGACAO);
+ALTER TABLE LIGACAO_ROTEIRO
+        ADD (FOREIGN KEY (cod_cidade1) REFERENCES LIGACAO);
 
 rem ====================================================================================================================================================================================================================================
 rem ELIMINAR SEQUENCIAS EXISTENTES
