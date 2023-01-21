@@ -74,20 +74,20 @@ INSERT INTO ligacao
 INSERT INTO ligacao
         VALUES(9,10,500,826);
 INSERT INTO ligacao
-        VALUES(10,7,1200,785);
+        VALUES(7,10,1200,785);
 
 rem ====================================================================================================================================================================================================================================
 
 INSERT INTO Roteiro
-        VALUES(id_roteiro.NEXTVAL,3260,'Maputo','Pemba','Maputo-XaiXai-Inhambane-Beira-Quelimane-Nampula-Pemba');
+        VALUES(id_roteiro.NEXTVAL,3260,'Maputo','Pemba');
 INSERT INTO Roteiro
-        VALUES(id_roteiro.NEXTVAL,2870,'Maputo','Tete','Maputo-XaiXai-Inhambane-Beira-Quelimane-Tete');
+        VALUES(id_roteiro.NEXTVAL,2870,'Maputo','Tete');
 INSERT INTO Roteiro
-        VALUES(id_roteiro.NEXTVAL,4260,'Maputo','Lichinga','Maputo-Inhambane-Beira-Quelimane-Lichinga');
+        VALUES(id_roteiro.NEXTVAL,4260,'Maputo','Lichinga');
 INSERT INTO Roteiro
-        VALUES(id_roteiro.NEXTVAL,3260,'Pemba','Tete','Pemba-Nampula-Quelimane-Tete');
+        VALUES(id_roteiro.NEXTVAL,3260,'Pemba','Tete');
 INSERT INTO Roteiro
-        VALUES(id_roteiro.NEXTVAL,3260,'Tete','Maputo','Tete-Chimoio-Beira-Inhambane-XaiXai-Maputo');
+        VALUES(id_roteiro.NEXTVAL,3260,'Tete','Maputo');
 
 rem ====================================================================================================================================================================================================================================
 
@@ -335,6 +335,57 @@ INSERT INTO viagem_cidade
     VALUES(14,7);
 INSERT INTO viagem_cidade
     VALUES(14,6);
+
+rem ====================================================================================================================================================================================================================================
+
+INSERT INTO ligacao_roteiro
+    VALUES(1,1,2);
+INSERT INTO ligacao_roteiro
+    VALUES(1,2,3);
+INSERT INTO ligacao_roteiro
+    VALUES(1,3,4);
+INSERT INTO ligacao_roteiro
+    VALUES(1,4,7);
+INSERT INTO ligacao_roteiro
+    VALUES(1,7,8);
+
+INSERT INTO ligacao_roteiro
+    VALUES(2,1,2);
+INSERT INTO ligacao_roteiro
+    VALUES(2,2,3);
+INSERT INTO ligacao_roteiro
+    VALUES(2,3,4);
+INSERT INTO ligacao_roteiro
+    VALUES(2,4,7);
+INSERT INTO ligacao_roteiro
+    VALUES(2,6,7);
+
+INSERT INTO ligacao_roteiro
+    VALUES(3,1,3);
+INSERT INTO ligacao_roteiro
+    VALUES(3,3,4);
+INSERT INTO ligacao_roteiro
+    VALUES(3,4,7);
+INSERT INTO ligacao_roteiro
+    VALUES(3,7,10);
+
+INSERT INTO ligacao_roteiro
+    VALUES(4,6,7);
+INSERT INTO ligacao_roteiro
+    VALUES(4,7,8);
+INSERT INTO ligacao_roteiro
+    VALUES(4,8,9);
+
+INSERT INTO ligacao_roteiro
+    VALUES(5,1,2);
+INSERT INTO ligacao_roteiro
+    VALUES(5,2,3);
+INSERT INTO ligacao_roteiro
+    VALUES(5,3,4);
+INSERT INTO ligacao_roteiro
+    VALUES(5,4,5);
+INSERT INTO ligacao_roteiro
+    VALUES(5,5,6);
 
 COMMIT;
 

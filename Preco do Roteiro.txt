@@ -1,0 +1,5 @@
+SELECT SUM(custo)
+FROM ligacao_roteiro lr,ligacao l
+WHERE (lr.cod_cidade=l.cod_cidade AND lr.cod_cidade1=l.cod_cidade1) AND lr.cod_roteiro=x;
+
+//x e o cod_roteiro mando por parametro

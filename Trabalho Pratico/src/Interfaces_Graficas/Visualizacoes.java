@@ -20,7 +20,7 @@ public class Visualizacoes extends JFrame implements Fontes
 	private String [] titulosCliente= {"Codigo","Nome","Email","Nr de Contribuinte","Status"}; 
 	private String [] titulosViagem= {"Codigo","Cliente","Roteiro","Data de Partida","Data de Chegada","Data de Marcacao"};
 	private String [] titulosCidade= {"Codigo","Nome"};
-	private String [] titulosRoteiro= {"Codigo","Preco","Cidade de Partida","Cidade de Destino","Descricao"};
+	private String [] titulosRoteiro= {"Codigo","Preco","Cidade de Partida","Cidade de Destino"};
 	
 	private JButton close; //botao para fechar a janela
 	
@@ -145,10 +145,7 @@ public class Visualizacoes extends JFrame implements Fontes
 					x[i][0]=cd.getCod_cidade()+"";
 					x[i][1]=cd.getNome_cidade();
 				}break;
-//				private String [] titulosViagem= {"Codigo","Cliente","Roteiro","Data de Partida","Data de Chegada","Data de Marcacao"};
-//				private String [] titulosCidade= {"Codigo","Nome"};
-//				private String [] titulosRoteiro= {"Codigo","Preco","Cidade de Partida","Cidade de Destino","Descricao"};
-//	
+
 				case 'r':
 				{
 					rt=(Roteiro) array.get(i);
@@ -156,7 +153,6 @@ public class Visualizacoes extends JFrame implements Fontes
 					x[i][1]=rt.getPreco()+"";
 					x[i][2]=rt.getCd_partida()+"";
 					x[i][3]=rt.getCd_chegada();
-					x[i][4]=rt.getDescricao();
 				}
 			}
 			

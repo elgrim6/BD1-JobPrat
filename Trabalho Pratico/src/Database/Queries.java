@@ -90,9 +90,8 @@ public class Queries
 				float preco=rs.getFloat(2);
 				String cd_partida=rs.getString(3);
 				String cd_chegada=rs.getString(4);
-				String descricao=rs.getString(5);
 				
-				array.add(new Roteiro(cod_roteiro,preco,cd_partida,cd_chegada,descricao));
+				array.add(new Roteiro(cod_roteiro,preco,cd_partida,cd_chegada));
 			}
 		}
 		catch(SQLException s)
