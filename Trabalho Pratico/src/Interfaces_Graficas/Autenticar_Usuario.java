@@ -78,36 +78,6 @@ public class Autenticar_Usuario extends JFrame implements Fontes
 				{
 					public void actionPerformed(ActionEvent e)
 					{
-//						if(tipo.equals("Password do Funcionario"))
-//						{
-//							if(code.getText().equals(passFun))
-//							{
-//								new Interface_Trabalhador(false,"Funcionario");
-//								dispose();
-//							}
-//						}
-//						else
-//						{
-//							if(tipo.equals("Password do Administrador"))
-//							{
-//								if(code.getText().equals(passAdmin))
-//								{
-//									new Interface_Trabalhador(true,"Administrador");
-//									dispose();
-//								}
-//							}
-//							else
-//							{
-//								Cliente_Queries c=new Cliente_Queries();
-//								if(c.getCodCliente(Integer.parseInt(code.getText())))
-//								{
-//									new Interface_Cliente(Integer.parseInt(code.getText()));
-//									dispose();
-//								}
-//								else
-//									JOptionPane.showMessageDialog(Autenticar_Usuario.this, "Palavra Passe Incorrecta","ERRO",JOptionPane.ERROR_MESSAGE);
-//							}	
-//						}
 						boolean passou=false;
 						
 						if(tipo.equals("Codigo do Cliente"))

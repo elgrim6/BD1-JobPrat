@@ -1,22 +1,28 @@
 package Interfaces_Graficas;
 
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.StringTokenizer;
 
 import javax.swing.*;
 
 import Database.Queries;
+import Objectos.Cliente;
 
-public class Test extends javax.swing.JFrame {
+public class Login_Cliente extends javax.swing.JFrame {
 
     /**
      * Creates new form NewJFrame1
      */
-    public Test() {
+    public Login_Cliente() {
         initComponents();
+        setLocationRelativeTo(null);
+        setVisible(true);
     }
 
     /**
@@ -47,6 +53,21 @@ public class Test extends javax.swing.JFrame {
         jLabel2.setText("Palavra-Passe");
 
         jButton1.setText("Entrar");
+        jButton1.addActionListener(
+        		new ActionListener()
+        		{
+        			public void actionPerformed(ActionEvent e)
+					{
+						boolean passou=false;
+						
+							passou=checkCliente();
+						
+						if(passou)
+							dispose();
+					
+					}
+        		}
+        		);
 
         jButton2.setText("Voltar");
 
@@ -67,11 +88,6 @@ public class Test extends javax.swing.JFrame {
         jLabel3.setText("Caps Lock ligado!");
         jLabel3.setVisible(false);
 
-        jLabel4.setText("Não possui conta?");
-
-        jLabel5.setForeground(new java.awt.Color(191, 193, 193));
-        jLabel5.setText("Registrar");
-        jLabel5.setToolTipText("Criar nova Conta");
        
 
         jLabel6.setIcon(new ImageIcon(".\\Icons\\client.png")); // NOI18N
@@ -146,37 +162,7 @@ public class Test extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Test.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Test.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Test.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Test.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Test().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify                     
     private javax.swing.JButton jButton1;
@@ -214,18 +200,54 @@ public class Test extends javax.swing.JFrame {
   			jLabel3.setVisible(false);
   	}
   	
-  	public boolean checkCliente()
+	public boolean checkCliente()
+	{
+		Queries c=new Queries();
+		if(c.getCodCliente(Integer.parseInt( jTextField1.getText())))
+		{
+			boolean status=c.statusCliente(Integer.parseInt( jTextField1.getText()));
+			System.out.println(status);
+			if(status==true)
+			{
+				return checkPassword();
+			}
+			else
+			{
+				JOptionPane.showMessageDialog(null,"Este usuario encontra-se inactivo!\nPara voltar a activar a conta, por favor diriga-se ","ERRO",JOptionPane.ERROR_MESSAGE);
+			}
+		}
+		else
+		{
+			JOptionPane.showMessageDialog(null,"Usuario nao encontrado! ","ERRO",JOptionPane.ERROR_MESSAGE);
+		}
+		return false;
+	}
+	
+  	public boolean checkPassword()
   	{
   		Queries c=new Queries();
-  		if(c.getCodCliente(Integer.parseInt(jPasswordField1.getText())))
+  		String pass,x;
+  		int y;
+  		Cliente obj=(Cliente) c.umClientes(Integer.parseInt( jTextField1.getText()));
+  		x=obj.getNome();
+  		y=obj.getCod_cliente();
+  		
+  		StringTokenizer str=new StringTokenizer(x," ");
+  		x=str.nextToken();
+  		pass=x+y;
+  		
+  		if(jPasswordField1.getText().equals(pass))
   		{
-  			new Interface_Cliente(Integer.parseInt(jPasswordField1.getText()));
-  			return true;
+  			new Interface_Cliente(Integer.parseInt( jTextField1.getText()));
+			return true;
   		}
   		else
-  			return false;
+  			JOptionPane.showMessageDialog(null,"Palavra-Passe Incorrecta!","ERRO",JOptionPane.ERROR_MESSAGE);
+  		
+  		
+  		return false;
   	}
-  	
+	
   	public boolean checkTrabalhador(String passCorrecto,boolean restricao,String tipo)
   	{
   		if(jPasswordField1.getText().equals(passCorrecto))

@@ -259,6 +259,7 @@ public class Queries
 			return false;
 		}
 		
+		//metodo que retorna o status do cliente
 		public boolean statusCliente(int cod)
 		{
 			String sql="select status_cliente from cliente where cod_cliente="+cod;

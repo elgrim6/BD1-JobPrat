@@ -48,7 +48,7 @@ public class Escolher_Tipo_Usuario extends javax.swing.JFrame implements Fontes{
 					public void actionPerformed(ActionEvent a)
 					{
 						//janela para inserir o codigo do cliente (somente) para entrar na vista de cliente
-						new Autenticar_Usuario("Codigo do Cliente");
+						new Login_Cliente();
 						dispose();
 					}
 				}
