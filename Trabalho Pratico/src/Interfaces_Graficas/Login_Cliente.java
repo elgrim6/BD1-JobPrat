@@ -206,7 +206,6 @@ public class Login_Cliente extends javax.swing.JFrame {
 		if(c.getCodCliente(Integer.parseInt( jTextField1.getText())))
 		{
 			boolean status=c.statusCliente(Integer.parseInt( jTextField1.getText()));
-			System.out.println(status);
 			if(status==true)
 			{
 				return checkPassword();

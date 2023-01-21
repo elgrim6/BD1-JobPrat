@@ -187,16 +187,13 @@ public class Interface_Cliente extends javax.swing.JFrame {
 			x[i][2]=vg.getData_partida();
 			x[i][3]=vg.getData_chegada();
 			x[i][4]=vg.getData_marcacao();	
-			System.out.println("passou");
 		}
 		
 		table=new JTable(x,titulos);
-		System.out.println("criou");
 		
 		scroll=new JScrollPane(table);
         
         jPanel2.add(scroll);
-        System.out.println("adicionou");
 
         jTabbedPane1.addTab("Minhas Viagens", jPanel2);
 
