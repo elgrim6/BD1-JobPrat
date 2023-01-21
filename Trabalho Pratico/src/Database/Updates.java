@@ -7,7 +7,7 @@ public class Updates
 {
 	public static void alterarEstado(String x, int cod)
 	{
-		String sql="UPDATE Clientes SET status="+x+" where cod_cliente="+cod;
+		String sql="UPDATE Cliente SET status_cliente='"+x+"' where cod_cliente="+cod;
 		
 		try
 		{

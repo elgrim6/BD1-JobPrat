@@ -124,8 +124,7 @@ public class Autenticar_Usuario extends JFrame implements Fontes
 						
 						if(passou)
 							dispose();
-						else
-							JOptionPane.showMessageDialog(Autenticar_Usuario.this, "Codigo Incorrecto! Tente denovo!","ERRO",JOptionPane.ERROR_MESSAGE);
+					
 					}
 				});
 		
@@ -190,11 +189,23 @@ public class Autenticar_Usuario extends JFrame implements Fontes
 		Queries c=new Queries();
 		if(c.getCodCliente(Integer.parseInt(code.getText())))
 		{
-			new Interface_Cliente(Integer.parseInt(code.getText()));
-			return true;
+			boolean status=c.statusCliente(Integer.parseInt(code.getText()));
+			System.out.println(status);
+			if(status==true)
+			{
+				new Interface_Cliente(Integer.parseInt(code.getText()));
+				return true;
+			}
+			else
+			{
+				JOptionPane.showMessageDialog(null,"Este usuario encontra-se inactivo!\nPara voltar a activar a conta, por favor diriga-se ","ERRO",JOptionPane.ERROR_MESSAGE);
+			}
 		}
 		else
-			return false;
+		{
+			JOptionPane.showMessageDialog(null,"Usuario nao encontrado! ","ERRO",JOptionPane.ERROR_MESSAGE);
+		}
+		return false;
 	}
 	
 	public boolean checkTrabalhador(String passCorrecto,boolean restricao,String tipo)

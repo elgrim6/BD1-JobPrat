@@ -258,6 +258,28 @@ public class Queries
 			
 			return false;
 		}
+		
+		public boolean statusCliente(int cod)
+		{
+			String sql="select status_cliente from cliente where cod_cliente="+cod;
+			String status="";
+			
+			try
+			{
+				PreparedStatement ps=Connections.getConexao().prepareStatement(sql);
+				ResultSet rs=ps.executeQuery();
+				rs.next();
+				status=rs.getString(1);
+			}
+			catch(SQLException s)
+			{
+				System.out.println(s.getMessage());
+			}
+			if(status.equalsIgnoreCase("Activo"))
+				return true;
+			
+			return false;
+		}
 	
 
 }

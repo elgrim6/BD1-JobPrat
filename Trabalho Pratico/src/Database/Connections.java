@@ -9,7 +9,7 @@ public class Connections
 		Connection con=null;
 				
 			try {
-				con= DriverManager.getConnection("jdbc:oracle:thin:@192.168.56.1:1521:xe","C##DYLAN","DylanCassamo");
+				con= DriverManager.getConnection("jdbc:oracle:thin:@192.168.18.43:1521:xe","C##DYLAN","DylanCassamo");
 			} catch (SQLException e) {
 				System.out.println(e.getMessage());
 			}

@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
@@ -28,6 +29,7 @@ public class Interface_Cliente extends javax.swing.JFrame {
         initComponents();
         setVisible(true);
         setResizable(false);
+        setLocationRelativeTo(null);
     }
                         
     private void initComponents() {
@@ -89,7 +91,8 @@ public class Interface_Cliente extends javax.swing.JFrame {
 					public void actionPerformed(ActionEvent e) 
 					{
 						Updates.alterarEstado("INACTIVO",cod_cliente);
-						
+						JOptionPane.showMessageDialog(null, "Usuario Desctivado!\nPara voltar a activar este usuario, por favor diriga-se");
+						dispose();
 					}
         			
         		}

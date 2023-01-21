@@ -15,6 +15,8 @@ public class Escolher_Tipo_Usuario extends javax.swing.JFrame implements Fontes{
      */
     public Escolher_Tipo_Usuario() {
         initComponents();
+        setLocationRelativeTo(null);
+        setResizable(false);
     }
 
     /**
