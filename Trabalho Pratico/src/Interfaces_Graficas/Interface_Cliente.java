@@ -90,9 +90,13 @@ public class Interface_Cliente extends javax.swing.JFrame {
         		{
 					public void actionPerformed(ActionEvent e) 
 					{
-						Updates.alterarEstado("INACTIVO",cod_cliente);
-						JOptionPane.showMessageDialog(null, "Usuario Desctivado!\nPara voltar a activar este usuario, por favor diriga-se");
-						dispose();
+						int input = JOptionPane.showConfirmDialog(null, "Tem Certeza que Pretende Desactivar a conta?", "Customized Dialog",JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+						if(input==0)
+						{
+							Updates.alterarEstado("INACTIVO",cod_cliente);
+							JOptionPane.showMessageDialog(null, "Usuario Desctivado!\nPara voltar a activar este usuario, por favor diriga-se");
+							dispose();
+						}
 					}
         			
         		}
