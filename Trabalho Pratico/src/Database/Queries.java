@@ -9,6 +9,38 @@ public class Queries
 {
 	public Queries() {}
 	
+	//metodo para retornar 1 cliente pelo codigo
+	public static Object umClientes(int cod)
+	{
+		
+		String sql="select * from CLIENTE where cod_cliente="+cod;
+		Object obj=null;
+		
+		try
+		{
+			var ps=Connections.getConexao().createStatement(); 
+			
+			var rs=ps.executeQuery(sql);
+			
+			while(rs.next())
+			{
+				int cod_cliente=rs.getInt(1);
+				String nome=rs.getString(2);
+				String email=rs.getString(3);
+				int n_cont=rs.getInt(4);
+				String status=rs.getString(5);
+				
+				obj=new Cliente(cod_cliente,nome,email,n_cont,status);
+			}
+		}
+		catch(SQLException s)
+		{
+			System.out.println(s.getMessage());
+		}
+		
+		return obj;
+	}
+	
 	//metodo para retornar todos clientes
 	public static ArrayList<Object> todosClientes()
 	{
@@ -130,6 +162,39 @@ public class Queries
 		
 		return array;
 	}
+	
+	
+	//metodo para retornar cidades pelo codigo de cliente
+		public static ArrayList<Object> viagensCliente(int cod)
+		{
+			String sql="select * from viagem where cod_cliente="+cod;
+			ArrayList<Object> array=new ArrayList<>();
+			
+			try
+			{
+				var ps=Connections.getConexao().createStatement(); 
+				
+				var rs=ps.executeQuery(sql);
+				
+				while(rs.next())
+				{
+					int cod_viagem=rs.getInt(1);
+					int cod_cliente=rs.getInt(2);
+					int cod_roteiro=rs.getInt(3);
+					String data_partida=rs.getString(4);
+					String data_chegada=rs.getString(5);
+					String data_marcacao=rs.getString(6);
+					
+					array.add(new Viagem(cod_viagem,cod_cliente,cod_roteiro,data_partida,data_chegada,data_marcacao));
+				}
+			}
+			catch(SQLException s)
+			{
+				System.out.println(s.getMessage());
+			}
+			
+			return array;
+		}
 	
 	//metodo para verificar se existe apanhar um cliente com o codigo x
 	public boolean getCodCliente(int cod)
