@@ -20,6 +20,7 @@ public class Login_Cliente extends javax.swing.JFrame {
      * Creates new form NewJFrame1
      */
     public Login_Cliente() {
+    	super("Login Cliente");
         initComponents();
         setLocationRelativeTo(null);
         setVisible(true);
@@ -48,9 +49,9 @@ public class Login_Cliente extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Codigo de Usuario");
+        jLabel1.setText("Codigo de Usuario:");
 
-        jLabel2.setText("Palavra-Passe");
+        jLabel2.setText("Palavra-Passe:");
         
         jPasswordField1.addKeyListener(new UpdateCapsLogin());
 
@@ -62,7 +63,7 @@ public class Login_Cliente extends javax.swing.JFrame {
 					{
 						boolean passou=false;
 						
-							passou=checkCliente();
+						passou=checkCliente();
 						
 						if(passou)
 							dispose();
@@ -72,6 +73,16 @@ public class Login_Cliente extends javax.swing.JFrame {
         		);
 
         jButton2.setText("Voltar");
+        jButton2.addActionListener(
+        		new ActionListener()
+        		{
+        			public void actionPerformed(ActionEvent e)
+        			{
+        				new Escolher_Tipo_Usuario();
+        				dispose();
+        			}
+        		}
+        		);
 
         jCheckBox1.setText("Mostrar Password");
         jCheckBox1.addItemListener(
@@ -206,7 +217,7 @@ public class Login_Cliente extends javax.swing.JFrame {
 	public boolean checkCliente()
 	{
 		Queries c=new Queries();
-		if(c.getCodCliente(Integer.parseInt( jTextField1.getText())))
+		if(c.existeRegistro("cliente",Integer.parseInt( jTextField1.getText())))
 		{
 			obj=(Cliente) c.umClientes(Integer.parseInt( jTextField1.getText()));
 			
@@ -216,7 +227,7 @@ public class Login_Cliente extends javax.swing.JFrame {
 			}
 			else
 			{
-				JOptionPane.showMessageDialog(null,"Este usuario encontra-se inactivo!\nPara voltar a activar a conta, por favor diriga-se ","ERRO",JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null,"Este usuario encontra-se inactivo!\nPara voltar a activar a conta, por favor diriga-se ao balcao mais proximo da nossa agencia.","ERRO",JOptionPane.ERROR_MESSAGE);
 			}
 		}
 		else

@@ -3,8 +3,11 @@ package Interfaces_Graficas;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 import Interfaces.Fontes;
 
@@ -62,7 +65,7 @@ public class Escolher_Tipo_Usuario extends javax.swing.JFrame implements Fontes{
 					public void actionPerformed(ActionEvent a)
 					{
 						//janela para inserir o password (somente) para entrar na vista de funcionarios
-						new Autenticar_Usuario("Password do Funcionario");
+						new Autenticar_Usuario("Password do Funcionario:");
 						dispose();
 					}
 				}
@@ -76,7 +79,7 @@ public class Escolher_Tipo_Usuario extends javax.swing.JFrame implements Fontes{
 					public void actionPerformed(ActionEvent a)
 					{
 						//janela para inserir o codigo do cliente (somente) para entrar na vista de cliente
-						new Autenticar_Usuario("Password do Administrador");
+						new Autenticar_Usuario("Password do Administrador:");
 						dispose();
 					}
 				}
@@ -97,8 +100,44 @@ public class Escolher_Tipo_Usuario extends javax.swing.JFrame implements Fontes{
         jLabel2.setFont(Fontes.fontBold); // NOI18N
         jLabel2.setText("Bem Vindo, escolha o tipo de usuario");
 
-        jLabel3.setForeground(new java.awt.Color(191, 193, 193));
+        jLabel3.setForeground(Color.GRAY);
         jLabel3.setText("Sobre nossa agência");
+        jLabel3.setFont(fontSmall);
+        jLabel3.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				aboutUs();
+				jLabel3.setForeground(Color.GRAY);
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				jLabel3.setForeground(Color.GRAY);
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				jLabel3.setForeground(Color.BLACK);
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				aboutUs();
+				jLabel3.setForeground(Color.GRAY);
+				
+			}
+		}
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -155,5 +194,14 @@ public class Escolher_Tipo_Usuario extends javax.swing.JFrame implements Fontes{
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    // End of variables declaration                   
+    // End of variables declaration 
+    
+    public void aboutUs()
+    {
+    	JOptionPane.showMessageDialog(null,"Bem-vindo à Agência de Viagens!\n"
+    			+ " Somos uma agência de viagens de serviço completo dedicada a ajudá-lo a planejar e reservar as férias dos seus sonhos.\r\n"
+    			+ " Quer esteja à procura de um pacote de férias com tudo incluído para uma família.\n"
+    			+ "A nossa agência de turismo foi criada para ajudar as pessoas a desfrutar de suas viagens e aproveitarem ao máximo cada momento. Trabalhamos com destinos em todo o mundo, oferecendo pacotes de viagem a preços acessíveis.\n"
+    			+ "Também oferecemos serviços personalizados para aqueles que querem uma experiência única e memorável. Nossos profissionais altamente qualificados irão guiá-lo por todos os detalhes da sua viagem para que você possa relaxar e desfrutar de suas férias.");
+    }
 }

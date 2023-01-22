@@ -92,7 +92,7 @@ public class RegistrarCliente extends javax.swing.JFrame {
 							Cliente a=new Cliente(cod_cliente,nome,email,n_cont,status);
 							Inserts.inserirCliente(a);
 							
-							JOptionPane.showMessageDialog(null, "Operacao Sucedida!");
+							JOptionPane.showMessageDialog(null, "Operacao Sucedida! A sua palavra do n");
 						}
 					}
 				 );

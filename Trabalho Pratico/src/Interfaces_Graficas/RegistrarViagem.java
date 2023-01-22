@@ -29,6 +29,7 @@ public class RegistrarViagem extends javax.swing.JFrame {
     Calculos cal;
 	
     public RegistrarViagem() {
+    	super("Marcar Viagem");
     	cal=new Calculos();
     	cq=new Queries();
         initComponents();
@@ -87,6 +88,13 @@ public class RegistrarViagem extends javax.swing.JFrame {
         jLabel8.setText("Data de Chegada");
 
         jButton4.setText("Cancelar");
+        jButton4.addActionListener(new ActionListener()
+        		{
+        			public void actionPerformed(ActionEvent e)
+        			{
+        				dispose();
+        			}
+        		});
 
         jButton5.setText("Registrar");
         jButton5.addActionListener(

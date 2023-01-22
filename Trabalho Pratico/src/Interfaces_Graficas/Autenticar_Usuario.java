@@ -10,8 +10,8 @@ public class Autenticar_Usuario extends JFrame implements Fontes
 {
 	private String passFun="Funcionario",passAdmin="Admin"; //password dos funcionario e dos Administradores
 	private Container cont; //janela
-	private JPanel auth; //painel de Autenticacao
-	private JLabel logo,background,cred,show_pass_label; //labels
+	private JPanel auth,logoL; //painel de Autenticacao
+	private JLabel logo,cred,show_pass_label; //labels
 	private JCheckBox show_pass_box; //checkbox para mostrar o credencial
 	private JPasswordField code; //Campo de texto para inserir o credencial necessario para a autenticacao
 	private JButton login,exit; //botoes de login e sair
@@ -23,15 +23,24 @@ public class Autenticar_Usuario extends JFrame implements Fontes
 		
 		//definicao da janela
 		cont=getContentPane();
+		cont.setLayout(new GridLayout(2,1,10,10));
 		
-		//criacao da imagem de fundo da janela
-		background=new JLabel(new ImageIcon(".\\Icons\\Login Background.png"));
-		background.setLayout(new GridLayout(2,1,10,10));
-		cont.add(background);
+		//criacao do painel de logo
+		logoL=new JPanel(new GridLayout(1,3,10,10));
+		logoL.setOpaque(false);
 		
 		//criacao do logo
-		logo=new JLabel("Logo (para colocar mais tarde)");
+		logo=new JLabel();
+		if(tipo.equals("Password do Administrador:"))
+			logo.setIcon(new ImageIcon(".\\Icons\\admin.png"));
+		else
+			logo.setIcon(new ImageIcon(".\\Icons\\worker.png"));
 		logo.setFont(fontBold);
+		
+		//preenchimento do painel de logo
+		logoL.add(new JLabel());
+		logoL.add(logo);
+		logoL.add(new JLabel());
 		
 		//criacao do painel de autenticacao
 		auth=new JPanel(new GridLayout(3,2,10,10));
@@ -80,21 +89,10 @@ public class Autenticar_Usuario extends JFrame implements Fontes
 					{
 						boolean passou=false;
 						
-						if(tipo.equals("Codigo do Cliente"))
-						{
-						//	passou=checkCliente();
-						}
+						if(tipo.equals("Password do Funcionario:"))
+							passou=checkTrabalhador(passFun,false,"Funcionario");
 						else
-						{
-							if(tipo.equals("Password do Funcionario"))
-								passou=checkTrabalhador(passFun,false,"Funcionario");
-							else
-								passou=checkTrabalhador(passAdmin,true,"Administrador");
-						}
-						
-						if(passou)
-							dispose();
-					
+							passou=checkTrabalhador(passAdmin,true,"Administrador");
 					}
 				});
 		
@@ -121,8 +119,8 @@ public class Autenticar_Usuario extends JFrame implements Fontes
 		auth.add(exit);
 		
 		//preenchimento da janela
-		background.add(logo);
-		background.add(auth);
+		cont.add(logoL);
+		cont.add(auth);
 		 
 		//definicoes da janela
 		setSize(500,400);
@@ -187,6 +185,9 @@ public class Autenticar_Usuario extends JFrame implements Fontes
 			return true;
 		}
 		else
+		{
+			JOptionPane.showMessageDialog(null,"Password Incorrecto! Tente denovo!","ERRO",JOptionPane.ERROR_MESSAGE);
 			return false;
+		}
 	}
 }

@@ -1,5 +1,10 @@
 package Database;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.sql.*;
+import java.util.StringTokenizer;
+
+import javax.swing.JOptionPane;
 
 public class Connections 
 {
@@ -7,14 +12,35 @@ public class Connections
 	public static Connection getConexao()
 	{
 		Connection con=null;
-				
+		
 			try {
-				con= DriverManager.getConnection("jdbc:oracle:thin:@192.168.18.43:1521:xe","C##DYLAN","DylanCassamo");
+				con= DriverManager.getConnection("jdbc:oracle:thin:@"+getIp()+":1521:xe","C##ADMIN","BD2.isctem");
 			} catch (SQLException e) {
 				System.out.println(e.getMessage());
 			}
 			
 		return con;
+	}
+	
+	public static String getIp()
+	{
+		String ip="";
+		StringTokenizer str;
+		
+		InetAddress ia;
+		
+		try
+		{
+			ia=InetAddress.getLocalHost();
+			str=new StringTokenizer(ia+"","/");
+			str.nextToken();
+			ip=str.nextToken();
+		}
+		catch(UnknownHostException e) {
+			JOptionPane.showMessageDialog(null,"Erro inesperado!","ERRO",JOptionPane.ERROR_MESSAGE);
+		}
+		
+		return ip;
 	}
 	
 //	public static void main(String[] args) throws Exception 
