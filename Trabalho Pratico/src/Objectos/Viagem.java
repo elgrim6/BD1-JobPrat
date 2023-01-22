@@ -1,15 +1,18 @@
 package Objectos;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import Database.Queries;
 
 public class Viagem
 {
+	SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.mm.yyyy");
 	private int cod_viagem,cod_cliente,cod_roteiro;
-	private Date data_partida,data_chegada,data_marcacao;
+	private String data_partida,data_chegada;
+	private Date data_marcacao;
 	
-	public Viagem(int cod_viagem, int cod_cliente, int cod_roteiro, Date data_partida, Date data_chegada,
+	public Viagem(int cod_viagem, int cod_cliente, int cod_roteiro, String data_partida, String data_chegada,
 			Date data_marcacao) {
 		this.cod_viagem = cod_viagem;
 		this.cod_cliente = cod_cliente;
@@ -18,6 +21,7 @@ public class Viagem
 		this.data_chegada = data_chegada;
 		this.data_marcacao = data_marcacao;
 	}
+
 
 	public int getCod_viagem() {
 		return cod_viagem;
@@ -43,19 +47,19 @@ public class Viagem
 		this.cod_roteiro = cod_roteiro;
 	}
 
-	public Date getData_partida() {
+	public String getData_partida() {
 		return data_partida;
 	}
 
-	public void setData_partida(Date data_partida) {
+	public void setData_partida(String data_partida) {
 		this.data_partida = data_partida;
 	}
 
-	public Date getData_chegada() {
+	public String getData_chegada() {
 		return data_chegada;
 	}
 
-	public void setData_chegada(Date data_chegada) {
+	public void setData_chegada(String data_chegada) {
 		this.data_chegada = data_chegada;
 	}
 

@@ -46,7 +46,7 @@ public class Interface_Trabalhador extends JFrame implements Fontes
 				{
 					public void actionPerformed(ActionEvent e)
 					{
-						//entrar na interface para marcar uma viagem
+						new RegistrarViagem();//entrar na interface para criar viagem
 					}
 				});
 		
