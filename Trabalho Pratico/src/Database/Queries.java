@@ -274,11 +274,11 @@ public class Queries
 		return maior;	
 	}
 	
-	//metodo para retornar todas nome_preco
-	public ArrayList<Object> todasViagem_Duracao()
+	//metodo para retornar o cliente que fez a viagem mais longa
+	public Viagem_Duracao viagem_mais_longa()
 	{
-		String sql="select * from viagem_duracao";
-		ArrayList<Object> array=new ArrayList<>();
+		String sql="select cod_cliente,cod_viagem, duracao from viagem_duracao where (duracao=(select max(duracao) from viagem_duracao))";
+		Viagem_Duracao vd = null;
 		
 		try
 		{
@@ -293,7 +293,7 @@ public class Queries
 				int cod_viagem=rs.getInt(3);
 				int duracao=rs.getInt(4);
 				
-				array.add(new Viagem_Duracao(cod_cliente,nome_cliente,cod_viagem,duracao));
+				new Viagem_Duracao(cod_cliente,nome_cliente,cod_viagem,duracao);
 			}
 		}
 		catch(SQLException s)
@@ -301,7 +301,7 @@ public class Queries
 			System.out.println(s.getMessage());
 		}
 		
-		return array;
+		return vd;
 	}
 	
 	//metodo para retornar cidades pelo codigo de cliente
