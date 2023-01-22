@@ -135,9 +135,9 @@ public class Visualizacoes extends JFrame implements Fontes
 					x[i][0]=vg.getCod_viagem()+"";
 					x[i][1]=vg.getCod_cliente()+"";
 					x[i][2]=vg.getCod_roteiro()+"";
-					x[i][3]=vg.getData_partida();
-					x[i][4]=vg.getData_chegada();
-					x[i][5]=vg.getData_marcacao();
+					x[i][3]=vg.getData_partida()+"";
+					x[i][4]=vg.getData_chegada()+"";
+					x[i][5]=vg.getData_marcacao()+"";
 				}break;
 				case 'd':
 				{

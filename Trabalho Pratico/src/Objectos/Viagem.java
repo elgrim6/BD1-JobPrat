@@ -1,14 +1,16 @@
 package Objectos;
 
+import java.util.Date;
+
 import Database.Queries;
 
 public class Viagem
 {
 	private int cod_viagem,cod_cliente,cod_roteiro;
-	private String data_partida,data_chegada,data_marcacao;
+	private Date data_partida,data_chegada,data_marcacao;
 	
-	public Viagem(int cod_viagem, int cod_cliente, int cod_roteiro, String data_partida, String data_chegada,
-			String data_marcacao) {
+	public Viagem(int cod_viagem, int cod_cliente, int cod_roteiro, Date data_partida, Date data_chegada,
+			Date data_marcacao) {
 		this.cod_viagem = cod_viagem;
 		this.cod_cliente = cod_cliente;
 		this.cod_roteiro = cod_roteiro;
@@ -41,27 +43,27 @@ public class Viagem
 		this.cod_roteiro = cod_roteiro;
 	}
 
-	public String getData_partida() {
+	public Date getData_partida() {
 		return data_partida;
 	}
 
-	public void setData_partida(String data_partida) {
+	public void setData_partida(Date data_partida) {
 		this.data_partida = data_partida;
 	}
 
-	public String getData_chegada() {
+	public Date getData_chegada() {
 		return data_chegada;
 	}
 
-	public void setData_chegada(String data_chegada) {
+	public void setData_chegada(Date data_chegada) {
 		this.data_chegada = data_chegada;
 	}
 
-	public String getData_marcacao() {
+	public Date getData_marcacao() {
 		return data_marcacao;
 	}
 
-	public void setData_marcacao(String data_marcacao) {
+	public void setData_marcacao(Date data_marcacao) {
 		this.data_marcacao = data_marcacao;
 	}
 	

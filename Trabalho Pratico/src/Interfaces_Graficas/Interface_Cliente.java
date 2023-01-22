@@ -184,9 +184,9 @@ public class Interface_Cliente extends javax.swing.JFrame {
 			vg=(Viagem) array.get(i);
 			x[i][0]=vg.getCod_viagem()+"";
 			x[i][1]=vg.getCod_roteiro()+"";
-			x[i][2]=vg.getData_partida();
-			x[i][3]=vg.getData_chegada();
-			x[i][4]=vg.getData_marcacao();	
+			x[i][2]=vg.getData_partida()+"";
+			x[i][3]=vg.getData_chegada()+"";
+			x[i][4]=vg.getData_marcacao()+"";	
 		}
 		
 		table=new JTable(x,titulos);

@@ -51,6 +51,8 @@ public class Login_Cliente extends javax.swing.JFrame {
         jLabel1.setText("Codigo de Usuario");
 
         jLabel2.setText("Palavra-Passe");
+        
+        jPasswordField1.addKeyListener(new UpdateCapsLogin());
 
         jButton1.setText("Entrar");
         jButton1.addActionListener(
@@ -176,6 +178,7 @@ public class Login_Cliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
+    Cliente obj;
     // End of variables declaration        
     
   //classe privada para fazer o update do indicador do caps lock no painel de login
@@ -205,8 +208,9 @@ public class Login_Cliente extends javax.swing.JFrame {
 		Queries c=new Queries();
 		if(c.getCodCliente(Integer.parseInt( jTextField1.getText())))
 		{
-			boolean status=c.statusCliente(Integer.parseInt( jTextField1.getText()));
-			if(status==true)
+			obj=(Cliente) c.umClientes(Integer.parseInt( jTextField1.getText()));
+			
+			if(obj.getStatus().equalsIgnoreCase("activo"))
 			{
 				return checkPassword();
 			}
@@ -227,7 +231,6 @@ public class Login_Cliente extends javax.swing.JFrame {
   		Queries c=new Queries();
   		String pass,x;
   		int y;
-  		Cliente obj=(Cliente) c.umClientes(Integer.parseInt( jTextField1.getText()));
   		x=obj.getNome();
   		y=obj.getCod_cliente();
   		

@@ -1,12 +1,17 @@
 package Database;
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.Date;
 
 import Interfaces_Graficas.Visualizacoes;
 import Objectos.*;
 
 public class Queries
 {
+	
+	SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.mm.yyyy");
+	
 	public Queries() {}
 	
 	//metodo para retornar 1 cliente pelo codigo
@@ -147,9 +152,9 @@ public class Queries
 				int cod_viagem=rs.getInt(1);
 				int cod_cliente=rs.getInt(2);
 				int cod_roteiro=rs.getInt(3);
-				String data_partida=rs.getString(4);
-				String data_chegada=rs.getString(5);
-				String data_marcacao=rs.getString(6);
+				Date data_partida=rs.getDate(4);
+				Date data_chegada=rs.getDate(5);
+				Date data_marcacao=rs.getDate(6);
 				
 				array.add(new Viagem(cod_viagem,cod_cliente,cod_roteiro,data_partida,data_chegada,data_marcacao));
 			}
@@ -180,9 +185,9 @@ public class Queries
 					int cod_viagem=rs.getInt(1);
 					int cod_cliente=rs.getInt(2);
 					int cod_roteiro=rs.getInt(3);
-					String data_partida=rs.getString(4);
-					String data_chegada=rs.getString(5);
-					String data_marcacao=rs.getString(6);
+					Date data_partida=rs.getDate(4);
+					Date data_chegada=rs.getDate(5);
+					Date data_marcacao=rs.getDate(6);
 					
 					array.add(new Viagem(cod_viagem,cod_cliente,cod_roteiro,data_partida,data_chegada,data_marcacao));
 				}
@@ -259,28 +264,6 @@ public class Queries
 			return false;
 		}
 		
-		//metodo que retorna o status do cliente
-		public boolean statusCliente(int cod)
-		{
-			String sql="select status_cliente from cliente where cod_cliente="+cod;
-			String status="";
-			
-			try
-			{
-				PreparedStatement ps=Connections.getConexao().prepareStatement(sql);
-				ResultSet rs=ps.executeQuery();
-				rs.next();
-				status=rs.getString(1);
-			}
-			catch(SQLException s)
-			{
-				System.out.println(s.getMessage());
-			}
-			if(status.equalsIgnoreCase("Activo"))
-				return true;
-			
-			return false;
-		}
 	
 
 }
