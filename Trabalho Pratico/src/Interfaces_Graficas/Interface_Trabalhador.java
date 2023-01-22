@@ -2,13 +2,14 @@ package Interfaces_Graficas;
 import javax.swing.*;
 
 import Interfaces.Fontes;
+import Objectos.Viagem;
 
 import java.awt.*;
 import java.awt.event.*;
 public class Interface_Trabalhador extends JFrame implements Fontes
 {
 	private Container cont; //janela
-	private JButton criar_cliente,marcar_viagem,cancel_viagem,vis,alt,logout; //botoes
+	private JButton criar_cliente,marcar_viagem,cancel_viagem,vis,alt,logout,consultas; //botoes
 	private JPanel panel_botoes; //painel de botoes
 	
 	public Interface_Trabalhador(boolean restricao,String tipo)
@@ -33,6 +34,19 @@ public class Interface_Trabalhador extends JFrame implements Fontes
 					public void actionPerformed(ActionEvent e)
 					{
 						new RegistrarCliente();//entrar na interface para criar o cliente
+					}
+				});
+		
+		consultas = new JButton("Consultas");
+		consultas.setIcon(new ImageIcon(".\\Icons\\search.png"));
+		consultas.setFont(fontButton);
+		consultas.setBackground(Color.lightGray);
+		consultas.addActionListener(
+				new ActionListener()
+				{
+					public void actionPerformed(ActionEvent e)
+					{
+						new Interface_Consultas();
 					}
 				});
 		
@@ -117,11 +131,11 @@ public class Interface_Trabalhador extends JFrame implements Fontes
 		panel_botoes.add(cancel_viagem);
 		panel_botoes.add(vis);
 		panel_botoes.add(alt);
+		panel_botoes.add(consultas);
 		panel_botoes.add(logout);
 		
 		//preenchimento de espacos vazios
-		panel_botoes.add(new JLabel());
-		panel_botoes.add(new JLabel());
+		
 		
 		//preenchimento da janela
 		cont.add(panel_botoes);

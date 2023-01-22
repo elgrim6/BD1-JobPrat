@@ -21,6 +21,10 @@ public class Visualizacoes extends JFrame implements Fontes
 	private String [] titulosViagem= {"Codigo","Cliente","Roteiro","Data de Partida","Data de Chegada","Data de Marcacao"};
 	private String [] titulosCidade= {"Codigo","Nome"};
 	private String [] titulosRoteiro= {"Codigo","Cidade de Partida","Cidade de Destino"};
+	private String [] titulosConsultaDylan= {"Codigo do Cliente","Nome do Cliente","Codigo da Viagem","Duracao(Dias)"};
+	private String [] titulosConsultaLindsay= {"Nome da Cidade","Numero de Viagens"};
+	private String [] titulosConsultaEugenio= {"Codigo do Cliente","Nome do Cliente","Codigo do Roteiro","Valor"};
+	private String [] titulosConsultaGilberto= {"Codigo do Cliente","Nome do Cliente","Codigo da Viagem","Data de Partida","Data de Chegada","Data de Marcacao"};
 	
 	private JButton close; //botao para fechar a janela
 	
@@ -29,6 +33,10 @@ public class Visualizacoes extends JFrame implements Fontes
 	private Viagem vg;
 	private Cidade cd;
 	private Roteiro rt;
+	private Viagem_Duracao vd;
+	private Cidade_Quant cqt;
+	private Cliente_Datas cdt;
+	private Nome_Preco np;
 	
 	
 	public Visualizacoes(char tipo)
@@ -40,6 +48,10 @@ public class Visualizacoes extends JFrame implements Fontes
 		 case 'v':header=titulosViagem;break;
 		 case 'd':header=titulosCidade;break;
 		 case 'r':header=titulosRoteiro;break;
+		 case 'y':header=titulosConsultaDylan;break;
+		 case 'l':header=titulosConsultaLindsay;break;
+		 case 'e':header=titulosConsultaEugenio;break;
+		 case 'g':header=titulosConsultaGilberto;break;
 		 default:System.out.println("error");
 		}
 		//titulo da janela
@@ -92,7 +104,7 @@ public class Visualizacoes extends JFrame implements Fontes
 	//metodo para preencher a tabela
 	public String[][] criarTabela(char tipo)
 	{
-		ArrayList<Object> array=null;
+		ArrayList<Object> array = null;
 		Queries cq=new Queries();
 		switch(tipo)
 		{
@@ -111,7 +123,24 @@ public class Visualizacoes extends JFrame implements Fontes
 			case 'r':
 			{
 				array=cq.todosRoteiros();
-			}
+			}break;
+			case 'y':
+			{
+				array.add(cq.viagem_mais_longa());
+			}break;
+			case 'l':
+			{
+				array=cq.clientes_Numa_Cidade();
+			}break;
+			case 'e':
+			{
+				array.add(cq.todasCliente_Pagou_Mais());
+			}break;
+			case 'g':
+			{
+				array=cq.clientes_Numa_Cidade();
+			}break;
+			
 		}
 		
 		String[][] x=new String[array.size()][header.length];
@@ -152,7 +181,39 @@ public class Visualizacoes extends JFrame implements Fontes
 					x[i][0]=rt.getCod_roteiro()+"";
 					x[i][1]=rt.getCd_partida()+"";
 					x[i][2]=rt.getCd_chegada();
-				}
+				}break;
+				case 'y':
+				{
+					vd=(Viagem_Duracao) array.get(i);
+					x[i][0]=vd.getCod_cliente()+"";
+					x[i][1]=vd.getNome_cliente();
+					x[i][2]=vd.getCod_viagem()+"";
+					x[i][3]=vd.getDuracao()+"";
+				}break;
+				 case 'l':
+				 {
+						cqt=(Cidade_Quant) array.get(i);
+						x[i][0]=cqt.getNome_cidade();
+						x[i][1]=cqt.getNr_viagens()+"";
+				}break;
+				 case 'e':
+				 {
+						np=(Nome_Preco) array.get(i);
+						x[i][0]=np.getCod_cliente()+"";
+						x[i][1]=np.getNome();
+						x[i][2]=np.getCod_roteiro()+"";
+						x[i][3]=np.getPreco()+"";
+				}break;
+				 case 'g':
+				 {
+						cdt=(Cliente_Datas) array.get(i);
+						x[i][0]=cdt.getCod_cliente()+"";
+						x[i][1]=cdt.getNome();
+						x[i][2]=cdt.getCod_viagem()+"";
+						x[i][3]=cdt.getData_partida()+"";
+						x[i][4]=cdt.getData_chegada()+"";
+						x[i][5]=cdt.getData_marcacao()+"";
+				}break;
 			}
 			
 		}
