@@ -34,7 +34,7 @@ public class Visualizacoes extends JFrame implements Fontes
 	private Cidade cd;
 	private Roteiro rt;
 	private Viagem_Duracao vd;
-	private Cidade_Quant cqt;
+	private Cidade_Quant qc;
 	private Cliente_Datas cdt;
 	private Nome_Preco np;
 	
@@ -126,15 +126,15 @@ public class Visualizacoes extends JFrame implements Fontes
 			}break;
 			case 'y':
 			{
-				array.add(cq.viagem_mais_longa());
+				array=cq.viagem_mais_longa();
 			}break;
 			case 'l':
 			{
-				array=cq.clientes_Numa_Cidade();
+				array=cq.todasCidade_Quant();
 			}break;
 			case 'e':
 			{
-				array.add(cq.todasCliente_Pagou_Mais());
+				array=cq.todasCliente_Pagou_Mais();
 			}break;
 			case 'g':
 			{
@@ -192,9 +192,9 @@ public class Visualizacoes extends JFrame implements Fontes
 				}break;
 				 case 'l':
 				 {
-						cqt=(Cidade_Quant) array.get(i);
-						x[i][0]=cqt.getNome_cidade();
-						x[i][1]=cqt.getNr_viagens()+"";
+						qc=(Cidade_Quant) array.get(i);
+						x[i][0]=qc.getNome_cidade();
+						x[i][1]=qc.getNr_viagens()+"";
 				}break;
 				 case 'e':
 				 {

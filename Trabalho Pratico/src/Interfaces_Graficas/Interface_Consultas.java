@@ -1,5 +1,8 @@
 package Interfaces_Graficas;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 public class Interface_Consultas extends javax.swing.JFrame {
 
     /**
@@ -29,15 +32,47 @@ public class Interface_Consultas extends javax.swing.JFrame {
 
         jButton1.setText("Cliente que Fez a Viagem Mais Longa");
         jButton1.setToolTipText("Consulta Dylan");
+        jButton1.addActionListener(
+				new ActionListener()
+				{
+					public void actionPerformed(ActionEvent e)
+					{
+						new Visualizacoes('y');
+					}
+				});
 
         jButton2.setText("Todos Clientes Actualmente em Uma Viagem");
         jButton2.setToolTipText("Consulta Gilberto");
+        jButton2.addActionListener(
+				new ActionListener()
+				{
+					public void actionPerformed(ActionEvent e)
+					{
+						new Visualizacoes('g');
+					}
+				});
 
         jButton3.setText("Quantidade de Clientes que Estiveram em Cada Cidade");
         jButton3.setToolTipText("Consulta Lindsay");
+        jButton3.addActionListener(
+				new ActionListener()
+				{
+					public void actionPerformed(ActionEvent e)
+					{
+						new Visualizacoes('l');
+					}
+				});
 
         jButton6.setText("Cliente que Pagou o Valor Mais Alto");
         jButton6.setToolTipText("Consulta Eugenio");
+        jButton6.addActionListener(
+				new ActionListener()
+				{
+					public void actionPerformed(ActionEvent e)
+					{
+						new Visualizacoes('e');
+					}
+				});
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

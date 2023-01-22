@@ -199,7 +199,7 @@ public class Queries
 	//metodo para retornar os clientes que estao numa viagem
 	public ArrayList<Object> clientes_Numa_Cidade()
 	{
-		String sql="SELECT * from cliente_datas where data_partida<=SYSDATE AND SYSDATE<=data_chegada;";
+		String sql="SELECT * from cliente_datas where data_partida<=SYSDATE AND SYSDATE<=data_chegada";
 		ArrayList<Object> array=new ArrayList<>();
 		
 		try
@@ -258,7 +258,7 @@ public class Queries
 	}
 	
 	//metodo para retornar todas nome e codigo do cliente que pagou mais numa viagem
-	public Nome_Preco todasCliente_Pagou_Mais()
+	public ArrayList<Object> todasCliente_Pagou_Mais()
 	{
 		Nome_Preco maior=new Nome_Preco(0,null,0);
 		Nome_Preco aux=null;
@@ -270,15 +270,18 @@ public class Queries
 			if(aux.getPreco()>maior.getPreco())
 				maior=aux;
 		}
+		array=new ArrayList<>();
+		array.add(maior);
 		
-		return maior;	
+		return array;	
 	}
 	
 	//metodo para retornar o cliente que fez a viagem mais longa
-	public Viagem_Duracao viagem_mais_longa()
+	public ArrayList<Object> viagem_mais_longa()
 	{
 		String sql="select cod_cliente,cod_viagem, duracao from viagem_duracao where (duracao=(select max(duracao) from viagem_duracao))";
 		Viagem_Duracao vd = null;
+		ArrayList<Object> array=new ArrayList<>();
 		
 		try
 		{
@@ -301,7 +304,9 @@ public class Queries
 			System.out.println(s.getMessage());
 		}
 		
-		return vd;
+		array.add(vd);
+		
+		return array;
 	}
 	
 	//metodo para retornar cidades pelo codigo de cliente
