@@ -151,8 +151,8 @@ public class Queries
 				int cod_viagem=rs.getInt(1);
 				int cod_cliente=rs.getInt(2);
 				int cod_roteiro=rs.getInt(3);
-				Date data_partida=rs.getDate(4);
-				Date data_chegada=rs.getDate(5);
+				String data_partida=rs.getString(4);
+				String data_chegada=rs.getString(5);
 				Date data_marcacao=rs.getDate(6);
 				
 				array.add(new Viagem(cod_viagem,cod_cliente,cod_roteiro,data_partida,data_chegada,data_marcacao));
@@ -184,8 +184,8 @@ public class Queries
 					int cod_viagem=rs.getInt(1);
 					int cod_cliente=rs.getInt(2);
 					int cod_roteiro=rs.getInt(3);
-					Date data_partida=rs.getDate(4);
-					Date data_chegada=rs.getDate(5);
+					String data_partida=rs.getString(4);
+					String data_chegada=rs.getString(5);
 					Date data_marcacao=rs.getDate(6);
 					
 					array.add(new Viagem(cod_viagem,cod_cliente,cod_roteiro,data_partida,data_chegada,data_marcacao));
@@ -267,9 +267,9 @@ public class Queries
 		public float precoRoteiro(int x)
 		{	
 			float preco=0;
+			String sql="SELECT SUM(custo) FROM ligacao_roteiro lr,ligacao l WHERE (lr.cod_cidade=l.cod_cidade AND lr.cod_cidade1=l.cod_cidade1) AND lr.cod_roteiro="+x;
 			try
 			{
-				String sql="SELECT SUM(custo) FROM ligacao_roteiro lr,ligacao l WHERE (lr.cod_cidade=l.cod_cidade AND lr.cod_cidade1=l.cod_cidade1) AND lr.cod_roteiro="+x;
 				PreparedStatement ps=Connections.getConexao().prepareStatement(sql);
 				ResultSet rs=ps.executeQuery();
 				rs.next();
@@ -283,6 +283,28 @@ public class Queries
 			return preco;	
 		}
 		
-	
+		//metodo para devolver a descricao do roteiro
+		public String descricaoRoteiro(int x)
+		{
+			String desc="";
+			String sql="SELECT c.nome_cidade FROM cidade c,cidade_roteiro cr WHERE c.cod_cidade=cr.cod_cidade AND cr.cod_roteiro="+x;
+			try
+			{
+				var ps=Connections.getConexao().createStatement(); 
+				
+				var rs=ps.executeQuery(sql);
+				
+				while(rs.next())
+				{
+					desc=desc+rs.getString(1)+", ";
+				}
+			}
+			catch(SQLException s)
+			{
+				System.out.println(s.getMessage());
+			}
+			
+			return desc;
+		}
 
 }
