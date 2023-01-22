@@ -79,15 +79,15 @@ INSERT INTO ligacao
 rem ====================================================================================================================================================================================================================================
 
 INSERT INTO Roteiro
-        VALUES(id_roteiro.NEXTVAL,3260,'Maputo','Pemba');
+        VALUES(id_roteiro.NEXTVAL,'Maputo','Pemba');
 INSERT INTO Roteiro
-        VALUES(id_roteiro.NEXTVAL,2870,'Maputo','Tete');
+        VALUES(id_roteiro.NEXTVAL,'Maputo','Tete');
 INSERT INTO Roteiro
-        VALUES(id_roteiro.NEXTVAL,4260,'Maputo','Lichinga');
+        VALUES(id_roteiro.NEXTVAL,'Maputo','Lichinga');
 INSERT INTO Roteiro
-        VALUES(id_roteiro.NEXTVAL,3260,'Pemba','Tete');
+        VALUES(id_roteiro.NEXTVAL,'Pemba','Tete');
 INSERT INTO Roteiro
-        VALUES(id_roteiro.NEXTVAL,3260,'Tete','Maputo');
+        VALUES(id_roteiro.NEXTVAL,'Tete','Maputo');
 
 rem ====================================================================================================================================================================================================================================
 
@@ -386,6 +386,7 @@ INSERT INTO ligacao_roteiro
     VALUES(5,4,5);
 INSERT INTO ligacao_roteiro
     VALUES(5,5,6);
+
 
 COMMIT;
 

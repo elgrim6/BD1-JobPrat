@@ -2,12 +2,10 @@ package Objectos;
 public class Roteiro
 {
 	private int cod_roteiro;
-	private float preco;
 	private String cd_partida,cd_chegada;
 	
-	public Roteiro(int cod_roteiro, float preco, String cd_partida, String cd_chegada) {
+	public Roteiro(int cod_roteiro, String cd_partida, String cd_chegada) {
 		this.cod_roteiro = cod_roteiro;
-		this.preco = preco;
 		this.cd_partida = cd_partida;
 		this.cd_chegada = cd_chegada;
 	}
@@ -18,14 +16,6 @@ public class Roteiro
 
 	public void setCod_roteiro(int cod_roteiro) {
 		this.cod_roteiro = cod_roteiro;
-	}
-
-	public float getPreco() {
-		return preco;
-	}
-
-	public void setPreco(float preco) {
-		this.preco = preco;
 	}
 
 	public String getCd_partida() {
@@ -46,7 +36,7 @@ public class Roteiro
 
 	@Override
 	public String toString() {
-		return "Roteiro [cod_roteiro=" + cod_roteiro + ", preco=" + preco + ", cd_partida=" + cd_partida
+		return "Roteiro [cod_roteiro=" + cod_roteiro + ", cd_partida=" + cd_partida
 				+ ", cd_chegada=" + cd_chegada + "]";
 	}
 }

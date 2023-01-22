@@ -5,6 +5,7 @@ rem ELIMINAR TABELAS EXISTENTES
 
 drop table viagem_cidade;
 drop table viagem;
+drop table Ligacao_roteiro;
 drop table ligacao;
 drop table Cidade_Roteiro;
 drop table Cidade;
@@ -19,7 +20,7 @@ create table cliente (
     nome                VARCHAR2(30) NOT NULL CHECK(LENGTH(nome)>7),
     email               VARCHAR2(30) NOT NULL CHECK(email LIKE '%@%' AND email LIKE '%.%'),
     n_cont              NCHAR(9) NOT NULL UNIQUE CHECK(n_cont>=0 AND LENGTH(n_cont)=9),
-    status_cliente       VARCHAR2,NOT NULL CHECK(status_cliente=='ACTIVO' OR status_cliente=='INACTIVO'),
+    status_cliente       VARCHAR2(8) NOT NULL CHECK(status_cliente='ACTIVO' OR status_cliente='INACTIVO'),
     PRIMARY KEY (cod_cliente)
 );
 CREATE TABLE cidade (
@@ -34,7 +35,6 @@ CREATE TABLE CIDADE_ROTEIRO (
 );
 CREATE TABLE ROTEIRO (
     cod_roteiro         NUMBER(7) NOT NULL CHECK(cod_roteiro>=0),
-    preco               NUMBER(8,2) NOT NULL CHECK(preco>=0),
     cd_partida          VARCHAR2(20) NOT NULL CHECK(cd_partida!=' '),
     cd_chegada          VARCHAR2(20) NOT NULL CHECK(cd_chegada!=' '),
     PRIMARY KEY (cod_roteiro)
@@ -67,6 +67,7 @@ CREATE TABLE LIGACAO_ROTEIRO(
     PRIMARY KEY (cod_roteiro,cod_cidade,cod_cidade1)
 );
 
+
 rem CHAVES ESTRANGEIRAS
 
 ALTER TABLE VIAGEM
@@ -92,9 +93,10 @@ ALTER TABLE VIAGEM_CIDADE
 ALTER TABLE LIGACAO_ROTEIRO
         ADD (FOREIGN KEY (cod_roteiro) REFERENCES ROTEIRO);
 ALTER TABLE LIGACAO_ROTEIRO
-        ADD (FOREIGN KEY (cod_cidade) REFERENCES LIGACAO);
-ALTER TABLE LIGACAO_ROTEIRO
-        ADD (FOREIGN KEY (cod_cidade1) REFERENCES LIGACAO);
+        ADD (FOREIGN KEY (cod_cidade,cod_cidade1) REFERENCES LIGACAO);
+
+
+
 
 rem ====================================================================================================================================================================================================================================
 rem ELIMINAR SEQUENCIAS EXISTENTES

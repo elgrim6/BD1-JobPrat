@@ -92,11 +92,10 @@ public class Queries
 			while(rs.next())
 			{
 				int cod_roteiro=rs.getInt(1);
-				float preco=rs.getFloat(2);
-				String cd_partida=rs.getString(3);
-				String cd_chegada=rs.getString(4);
+				String cd_partida=rs.getString(2);
+				String cd_chegada=rs.getString(3);
 				
-				array.add(new Roteiro(cod_roteiro,preco,cd_partida,cd_chegada));
+				array.add(new Roteiro(cod_roteiro,cd_partida,cd_chegada));
 			}
 		}
 		catch(SQLException s)

@@ -20,7 +20,7 @@ public class Visualizacoes extends JFrame implements Fontes
 	private String [] titulosCliente= {"Codigo","Nome","Email","Nr de Contribuinte","Status"}; 
 	private String [] titulosViagem= {"Codigo","Cliente","Roteiro","Data de Partida","Data de Chegada","Data de Marcacao"};
 	private String [] titulosCidade= {"Codigo","Nome"};
-	private String [] titulosRoteiro= {"Codigo","Preco","Cidade de Partida","Cidade de Destino"};
+	private String [] titulosRoteiro= {"Codigo","Cidade de Partida","Cidade de Destino"};
 	
 	private JButton close; //botao para fechar a janela
 	
@@ -150,9 +150,8 @@ public class Visualizacoes extends JFrame implements Fontes
 				{
 					rt=(Roteiro) array.get(i);
 					x[i][0]=rt.getCod_roteiro()+"";
-					x[i][1]=rt.getPreco()+"";
-					x[i][2]=rt.getCd_partida()+"";
-					x[i][3]=rt.getCd_chegada();
+					x[i][1]=rt.getCd_partida()+"";
+					x[i][2]=rt.getCd_chegada();
 				}
 			}
 			
