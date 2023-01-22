@@ -289,9 +289,11 @@ public class Queries
 			while(rs.next())
 			{
 				int cod_cliente=rs.getInt(1);
-				int duracao=rs.getInt(2);
+				String nome_cliente=rs.getString(2);
+				int cod_viagem=rs.getInt(3);
+				int duracao=rs.getInt(4);
 				
-				array.add(new Viagem_Duracao(cod_cliente,duracao));
+				array.add(new Viagem_Duracao(cod_cliente,nome_cliente,cod_viagem,duracao));
 			}
 		}
 		catch(SQLException s)
