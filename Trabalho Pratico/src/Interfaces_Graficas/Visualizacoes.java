@@ -33,7 +33,7 @@ public class Visualizacoes extends JFrame implements Fontes
 	private Viagem vg;
 	private Cidade cd;
 	private Roteiro rt;
-	private Viagem_Duracao vd;
+	private Viagem_Duracao vd=new Viagem_Duracao(0, "", 0, 0);
 	private Cidade_Quant qc;
 	private Cliente_Datas cdt;
 	private Nome_Preco np;
@@ -174,7 +174,6 @@ public class Visualizacoes extends JFrame implements Fontes
 					x[i][0]=cd.getCod_cidade()+"";
 					x[i][1]=cd.getNome_cidade();
 				}break;
-
 				case 'r':
 				{
 					rt=(Roteiro) array.get(i);
@@ -192,27 +191,27 @@ public class Visualizacoes extends JFrame implements Fontes
 				}break;
 				 case 'l':
 				 {
-						qc=(Cidade_Quant) array.get(i);
-						x[i][0]=qc.getNome_cidade();
-						x[i][1]=qc.getNr_viagens()+"";
+					qc=(Cidade_Quant) array.get(i);
+					x[i][0]=qc.getNome_cidade();
+					x[i][1]=qc.getNr_viagens()+"";
 				}break;
 				 case 'e':
 				 {
-						np=(Nome_Preco) array.get(i);
-						x[i][0]=np.getCod_cliente()+"";
-						x[i][1]=np.getNome();
-						x[i][2]=np.getCod_roteiro()+"";
-						x[i][3]=np.getPreco()+"";
+					np=(Nome_Preco) array.get(i);
+					x[i][0]=np.getCod_cliente()+"";
+					x[i][1]=np.getNome();
+					x[i][2]=np.getCod_roteiro()+"";
+					x[i][3]=np.getPreco()+"";
 				}break;
 				 case 'g':
 				 {
-						cdt=(Cliente_Datas) array.get(i);
-						x[i][0]=cdt.getCod_cliente()+"";
-						x[i][1]=cdt.getNome();
-						x[i][2]=cdt.getCod_viagem()+"";
-						x[i][3]=cdt.getData_partida()+"";
-						x[i][4]=cdt.getData_chegada()+"";
-						x[i][5]=cdt.getData_marcacao()+"";
+					cdt=(Cliente_Datas) array.get(i);
+					x[i][0]=cdt.getCod_cliente()+"";
+					x[i][1]=cdt.getNome();
+					x[i][2]=cdt.getCod_viagem()+"";
+					x[i][3]=cdt.getData_partida()+"";
+					x[i][4]=cdt.getData_chegada()+"";
+					x[i][5]=cdt.getData_marcacao()+"";
 				}break;
 			}
 			

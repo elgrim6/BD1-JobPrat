@@ -279,9 +279,11 @@ public class Queries
 	//metodo para retornar o cliente que fez a viagem mais longa
 	public ArrayList<Object> viagem_mais_longa()
 	{
-		String sql="select cod_cliente,cod_viagem, duracao from viagem_duracao where (duracao=(select max(duracao) from viagem_duracao))";
-		Viagem_Duracao vd = null;
+		String sql="select cod_cliente,nome,cod_viagem, duracao from viagem_duracao where (duracao=(select max(duracao) from viagem_duracao))";
+		Viagem_Duracao vd;
 		ArrayList<Object> array=new ArrayList<>();
+		
+		
 		
 		try
 		{
@@ -289,23 +291,20 @@ public class Queries
 			
 			var rs=ps.executeQuery(sql);
 			
-			while(rs.next())
-			{
-				int cod_cliente=rs.getInt(1);
-				String nome_cliente=rs.getString(2);
-				int cod_viagem=rs.getInt(3);
-				int duracao=rs.getInt(4);
-				
-				new Viagem_Duracao(cod_cliente,nome_cliente,cod_viagem,duracao);
-			}
+			rs.next();
+			
+			int cod_cliente=rs.getInt(1);
+			String nome_cliente=rs.getString(2);
+			int cod_viagem=rs.getInt(3);
+			int duracao=rs.getInt(4);
+			vd=new Viagem_Duracao(cod_cliente,nome_cliente,cod_viagem,duracao);
+			array.add(vd);
 		}
 		catch(SQLException s)
 		{
 			System.out.println(s.getMessage());
 		}
-		
-		array.add(vd);
-		
+
 		return array;
 	}
 	
