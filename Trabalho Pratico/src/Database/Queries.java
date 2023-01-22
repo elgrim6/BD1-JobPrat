@@ -263,6 +263,26 @@ public class Queries
 			return false;
 		}
 		
+		//metodo para calcular preco do roteiro
+		public float precoRoteiro(int x)
+		{	
+			float preco=0;
+			try
+			{
+				String sql="SELECT SUM(custo) FROM ligacao_roteiro lr,ligacao l WHERE (lr.cod_cidade=l.cod_cidade AND lr.cod_cidade1=l.cod_cidade1) AND lr.cod_roteiro="+x;
+				PreparedStatement ps=Connections.getConexao().prepareStatement(sql);
+				ResultSet rs=ps.executeQuery();
+				rs.next();
+				preco=rs.getFloat(1);
+			}
+			catch(SQLException e)
+			{
+				System.out.println(e.getMessage());
+			}
+			
+			return preco;	
+		}
+		
 	
 
 }
