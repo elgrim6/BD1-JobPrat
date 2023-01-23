@@ -383,6 +383,26 @@ public class Queries
 			
 		return false;
 	}
+	
+	//metodo para generico para verificar se existe um cliente com o nr de contribuinte x
+	public boolean existeNr_Contribuinte(int nr_cont)
+	{
+		String sql="Select nr_cont from cliente where nr_cont=?";
+		try
+		{
+			PreparedStatement ps=Connections.getConexao().prepareStatement(sql);
+			ps.setInt(1,nr_cont);
+			ResultSet rs=ps.executeQuery();
+			return rs.next();
+				
+		}
+		catch(SQLException e)
+		{
+			System.out.println(e.getMessage());
+		}
+			
+		return false;
+	}
 		
 	
 	//metodo para calcular preco do roteiro
