@@ -91,7 +91,7 @@ public class Interface_Trabalhador extends JFrame implements Fontes
 						if(tipo.equals("Funcionario"))
 							new Visualizacoes_Alteracoes(false,tipo,"Visualizacoes");
 						else
-							new Visualizacoes_Alteracoes(true,tipo,"Alteracoes");
+							new Visualizacoes_Alteracoes(true,tipo,"Visualizacoes");
 					}
 				});
 		
@@ -133,8 +133,6 @@ public class Interface_Trabalhador extends JFrame implements Fontes
 		panel_botoes.add(alt);
 		panel_botoes.add(consultas);
 		panel_botoes.add(logout);
-		
-		//preenchimento de espacos vazios
 		
 		
 		//preenchimento da janela

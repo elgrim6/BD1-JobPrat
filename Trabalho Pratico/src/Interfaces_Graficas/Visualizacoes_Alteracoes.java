@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+import Database.Queries;
 import Interfaces.Fontes;
 public class Visualizacoes_Alteracoes extends JFrame implements Fontes
 {
@@ -10,6 +11,7 @@ public class Visualizacoes_Alteracoes extends JFrame implements Fontes
 	private JButton cliente,roteiro,viagem,cidade,voltar;
 	private JPanel panel_botoes;
 	private String titulo;
+	private Queries q=new Queries();
 	
 	public Visualizacoes_Alteracoes(boolean restricao,String tipo_usuario,String tipo_janela)
 	{
@@ -32,14 +34,30 @@ public class Visualizacoes_Alteracoes extends JFrame implements Fontes
 				{
 					public void actionPerformed(ActionEvent e)
 					{
-						if(tipo_janela.equals("Visualizacoes")); // ; deve se tirar
+						int cod=0;
+						
+						if(tipo_janela.equals("Visualizacoes"))
 							new Visualizacoes('c');
-						//else
-							//entrar na interface alterar dados dos clientes
+						else
+						{
+							try
+							{
+								cod=Integer.parseInt(JOptionPane.showInputDialog("Insere o codigo do cliente que pretender alterar"));
+							}
+							catch(NumberFormatException nfe) {}
+							
+							if(cod!=0)
+							{
+								if(q.existeRegistro("Cliente",cod))
+									new Alterar_Cliente(cod);
+								else
+									JOptionPane.showMessageDialog(null,"Erro! Codigo nao existe!","ERRO",JOptionPane.ERROR_MESSAGE);
+							}
+						}
 					}
 				});
 		
-		//criacao do botao para visualizar/alterar dados dos roteiros
+		//criacao do botao para visualizar dados dos roteiros
 		roteiro=new JButton("Roteiros");
 		roteiro.setIcon(new ImageIcon(".\\Icons\\route.png"));
 		roteiro.setFont(fontButton);
@@ -49,11 +67,7 @@ public class Visualizacoes_Alteracoes extends JFrame implements Fontes
 				{
 					public void actionPerformed(ActionEvent e)
 					{
-						if(tipo_janela.equals("Visualizacoes")); // ; deve se tirar
-							new Visualizacoes('r');
-							//entrar na interface visualizar dados dos roteiros
-						//else
-							//entrar na interface alterar dados dos roteiros
+						new Visualizacoes('r');	
 					}
 				});
 		
@@ -67,29 +81,41 @@ public class Visualizacoes_Alteracoes extends JFrame implements Fontes
 				{
 					public void actionPerformed(ActionEvent e)
 					{
-						if(tipo_janela.equals("Visualizacoes")); // ; deve se tirar
+						int cod=0;
+						
+						if(tipo_janela.equals("Visualizacoes"))
 							new Visualizacoes('v');
-							//entrar na interface visualizar dados das viagens
-						//else
-							//entrar na interface alterar dados das viagens
+						else
+						{
+							try
+							{
+								cod=Integer.parseInt(JOptionPane.showInputDialog("Insere o codigo do Viagem que pretender alterar"));
+							}
+							catch(NumberFormatException nfe) {}
+							
+							if(cod!=0)
+							{
+								if(q.existeRegistro("Viagem",cod))
+									new Alterar_Viagem(cod);
+								else
+									JOptionPane.showMessageDialog(null,"Erro! Codigo nao existe!","ERRO",JOptionPane.ERROR_MESSAGE);
+							}
+						}
 					}
 				});
 		
-		//criacao do botao para visualizar/alterar dados das cidades
+		//criacao do botao para visualizar dados das cidades
 		cidade=new JButton("Cidades");
 		cidade.setIcon(new ImageIcon(".\\Icons\\city.png"));
 		cidade.setFont(fontButton);
+		
 		cidade.setBackground(Color.lightGray);
 		cidade.addActionListener(
 				new ActionListener()
 				{
 					public void actionPerformed(ActionEvent e)
 					{
-						if(tipo_janela.equals("Visualizacoes")); // ; deve se tirar
-							new Visualizacoes('d');
-							//entrar na interface visualizar dados das cidades
-						//else
-							//entrar na interface alterar dados das cidades
+						new Visualizacoes('d');
 					}
 				});
 		cidade.setEnabled(restricao);
@@ -108,10 +134,17 @@ public class Visualizacoes_Alteracoes extends JFrame implements Fontes
 					}
 				});
 		
+		//restricoes quando for alteracoes
+		if(tipo_janela.equals("Alteracoes"))
+		{
+			cidade.setEnabled(false);
+			roteiro.setEnabled(false);
+		}
+		
 		//preenchimento do painel
 		panel_botoes.add(cliente);
-		panel_botoes.add(roteiro);
 		panel_botoes.add(viagem);
+		panel_botoes.add(roteiro);
 		panel_botoes.add(cidade);
 		panel_botoes.add(voltar);
 		

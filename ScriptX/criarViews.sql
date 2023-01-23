@@ -2,7 +2,7 @@
 
 CREATE OR REPLACE VIEW viagem_duracao
     AS
-        select v.cod_cliente,c.nome,v.cod_viagem,(v.data_chegada-v.data_partida) "duracao (Dias)"
+        select v.cod_cliente,c.nome,v.cod_viagem,(v.data_chegada-v.data_partida) duracao
 		from viagem v,cliente c
 		where c.cod_cliente=v.cod_cliente;
 

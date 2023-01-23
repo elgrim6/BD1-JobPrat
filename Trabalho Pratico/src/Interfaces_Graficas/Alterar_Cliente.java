@@ -10,13 +10,15 @@ import Database.Inserts;
 import Objectos.Cliente;
 import Interfaces.Fontes;
 
-public class RegistrarCliente extends javax.swing.JFrame {
+public class Alterar_Cliente extends javax.swing.JFrame {
 
+	private int cod;
     /**
      * Creates new form NewJFrame
      */
-    public RegistrarCliente() {
-    	super("Registrar Cliente");
+    public Alterar_Cliente(int cod) {
+    	super("Alterar Cliente");
+    	this.cod=cod;
         initComponents();
         setVisible (true);
 		 setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -77,7 +79,7 @@ public class RegistrarCliente extends javax.swing.JFrame {
 					 }
 				 });
 
-        jButton3.setText("Registrar");
+        jButton3.setText("Alterar");
         jButton3.addActionListener(
 				 new ActionListener()
 					{

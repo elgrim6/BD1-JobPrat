@@ -164,8 +164,8 @@ public class Visualizacoes extends JFrame implements Fontes
 					x[i][0]=vg.getCod_viagem()+"";
 					x[i][1]=vg.getCod_cliente()+"";
 					x[i][2]=vg.getCod_roteiro()+"";
-					x[i][3]=vg.getData_partida()+"";
-					x[i][4]=vg.getData_chegada()+"";
+					x[i][3]=vg.getData_partida().substring(0,10);
+					x[i][4]=vg.getData_chegada().substring(0,10);
 					x[i][5]=vg.getData_marcacao()+"";
 				}break;
 				case 'd':
@@ -178,8 +178,8 @@ public class Visualizacoes extends JFrame implements Fontes
 				{
 					rt=(Roteiro) array.get(i);
 					x[i][0]=rt.getCod_roteiro()+"";
-					x[i][1]=rt.getCd_partida()+"";
-					x[i][2]=rt.getCd_chegada();
+					x[i][1]=rt.getCd_partida().substring(0,10);
+					x[i][2]=rt.getCd_chegada().substring(0,10);
 				}break;
 				case 'y':
 				{
@@ -209,8 +209,8 @@ public class Visualizacoes extends JFrame implements Fontes
 					x[i][0]=cdt.getCod_cliente()+"";
 					x[i][1]=cdt.getNome();
 					x[i][2]=cdt.getCod_viagem()+"";
-					x[i][3]=cdt.getData_partida()+"";
-					x[i][4]=cdt.getData_chegada()+"";
+					x[i][3]=cdt.getData_partida().substring(0,10);
+					x[i][4]=cdt.getData_chegada().substring(0,10);
 					x[i][5]=cdt.getData_marcacao()+"";
 				}break;
 			}
