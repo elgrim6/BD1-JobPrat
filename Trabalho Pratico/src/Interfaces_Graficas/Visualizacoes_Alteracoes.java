@@ -131,6 +131,7 @@ public class Visualizacoes_Alteracoes extends JFrame implements Fontes
 					public void actionPerformed(ActionEvent e)
 					{
 						dispose();
+						new Interface_Trabalhador(restricao, tipo_janela);
 					}
 				});
 		

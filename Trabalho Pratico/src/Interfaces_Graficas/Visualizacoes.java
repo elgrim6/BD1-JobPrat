@@ -178,8 +178,8 @@ public class Visualizacoes extends JFrame implements Fontes
 				{
 					rt=(Roteiro) array.get(i);
 					x[i][0]=rt.getCod_roteiro()+"";
-					x[i][1]=rt.getCd_partida().substring(0,10);
-					x[i][2]=rt.getCd_chegada().substring(0,10);
+					x[i][1]=rt.getCd_partida();
+					x[i][2]=rt.getCd_chegada();
 				}break;
 				case 'y':
 				{

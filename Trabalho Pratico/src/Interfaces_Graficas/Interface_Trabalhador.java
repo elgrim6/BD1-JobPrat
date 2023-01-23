@@ -89,9 +89,15 @@ public class Interface_Trabalhador extends JFrame implements Fontes
 					public void actionPerformed(ActionEvent e)
 					{
 						if(tipo.equals("Funcionario"))
-							new Visualizacoes_Alteracoes(false,tipo,"Visualizacoes");
+						{
+							dispose();
+							new Visualizacoes_Alteracoes(restricao,tipo,"Visualizacoes");
+						}
 						else
-							new Visualizacoes_Alteracoes(true,tipo,"Visualizacoes");
+						{
+							dispose();
+							new Visualizacoes_Alteracoes(restricao,tipo,"Visualizacoes");
+						}
 					}
 				});
 		
@@ -105,7 +111,8 @@ public class Interface_Trabalhador extends JFrame implements Fontes
 				{
 					public void actionPerformed(ActionEvent e)
 					{
-						new Visualizacoes_Alteracoes(true,tipo,"Alteracoes");
+						dispose();
+						new Visualizacoes_Alteracoes(restricao,tipo,"Alteracoes");
 					}
 				});
 		alt.setEnabled(restricao);

@@ -7,8 +7,11 @@ public class Alterar_Cliente extends javax.swing.JFrame {
      * Creates new form Alterar_Cliente
      */
     public Alterar_Cliente(int cod) {
+    	System.out.println("Bing bong entraste!");
         initComponents();
         this.cod=cod;
+        setVisible(true);
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -78,8 +81,18 @@ public class Alterar_Cliente extends javax.swing.JFrame {
         });
 
         jButton2.setText("Limpar Campos");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Cancelar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -166,7 +179,19 @@ public class Alterar_Cliente extends javax.swing.JFrame {
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                              
         // TODO add your handling code here:
-    }                                             
+    }    
+    
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
+    	jTextField1.setText("");
+    	jTextField2.setText("");
+    	jTextField3.setText("");
+    	jRadioButton1.setSelected(false);
+    	jRadioButton2.setSelected(false);
+    } 
+    
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        dispose();
+    } 
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:

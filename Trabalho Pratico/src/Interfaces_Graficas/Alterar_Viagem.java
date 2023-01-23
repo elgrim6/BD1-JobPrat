@@ -7,8 +7,11 @@ public class Alterar_Viagem extends javax.swing.JFrame {
      * Creates new form Alterar_Viagem
      */
     public Alterar_Viagem(int cod) {
+    	System.out.println("Bing bong entraste!");
         initComponents();
         this.cod=cod;
+        setVisible(true);
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -144,11 +147,15 @@ public class Alterar_Viagem extends javax.swing.JFrame {
     }                                           
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
+    	jTextField1.setText("");
+    	jTextField2.setText("");
+    	jTextField3.setText("");
+    	jTextField4.setText("");
+    	jTextField5.setText("");
     }                                        
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
+    	dispose();
     }                                        
 
     /**
