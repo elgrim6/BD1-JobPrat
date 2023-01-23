@@ -6,13 +6,29 @@ set serveroutput on format wrapped;
 rem ====================================================================================================================================================================================================================================
 rem CRIAR TRIGGERS
 
-CREATE OR REPLACE TRIGGER after_elimin_cliente
-AFTER DELETE 
-ON cliente FOR EACH ROW
+set serveroutput on;
+
+CREATE OR REPLACE TRIGGER before_insert_cliente
+BEFORE UPDATE OR INSERT ON Cliente
+FOR EACH row
+DECLARE nCont NCHAR;
+
 BEGIN
-    DELETE FROM viagem v
-    WHERE v.cod_cliente=Old.cliente.cod_cliente;
-END;
+    SELECT o.n_cont
+    INTO nCont
+    FROM Cliente o
+    WHERE o.cod_cliente = :new.cod_cliente;
+    
+    IF Select n_cont from cliente where n_cont=nCont !=null then
+		dbms_output.put_line('ERRO:Numero de Contribuinte ja existe');
+    //raise_application_error(-20002,('Data de entrega Invalida'));
+    ELSE
+    	dbms_output.put_line('Data de entrega foi alterada com sucesso.');
+    
+ELSE
+    
+
+END;/
 
 /
 
