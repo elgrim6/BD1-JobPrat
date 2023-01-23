@@ -110,7 +110,7 @@ public class RegistrarViagem extends javax.swing.JFrame {
 						Date data_marcacao=new Date(millis);
 						
 						Viagem a=new Viagem(0,cod_roteiro,cod_cliente,data_partida,data_chegada,data_marcacao);
-						Inserts.inserirViagem(a);
+						boolean passou=Inserts.inserirViagem(a);
 						
 						JOptionPane.showMessageDialog(null, "Operacao Sucedida!");
 					}

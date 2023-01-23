@@ -90,9 +90,10 @@ public class RegistrarCliente extends javax.swing.JFrame {
 							String status="ACTIVO";
 							
 							Cliente a=new Cliente(cod_cliente,nome,email,n_cont,status);
-							Inserts.inserirCliente(a);
+							boolean passou=Inserts.inserirCliente(a);
 							
-							JOptionPane.showMessageDialog(null, "Operacao Sucedida!");
+							if(passou==true)
+								JOptionPane.showMessageDialog(null, "Operacao Sucedida!");
 						}
 					}
 				 );
