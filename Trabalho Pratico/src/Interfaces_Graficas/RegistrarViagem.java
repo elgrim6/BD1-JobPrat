@@ -112,7 +112,8 @@ public class RegistrarViagem extends javax.swing.JFrame {
 						Viagem a=new Viagem(0,cod_roteiro,cod_cliente,data_partida,data_chegada,data_marcacao);
 						boolean passou=Inserts.inserirViagem(a);
 						
-						JOptionPane.showMessageDialog(null, "Operacao Sucedida!");
+						if(passou==true)
+							JOptionPane.showMessageDialog(null, "Operacao Sucedida!");
 					}
 				}
         		

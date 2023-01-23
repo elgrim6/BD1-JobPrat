@@ -27,7 +27,7 @@ public class Inserts {
 		return true;
 	}
 	
-	public boolean inserirViagem(Viagem obj)
+	public static boolean inserirViagem(Viagem obj)
 	{
 		String sql="INSERT INTO VIAGEM\r\n"
 				+" VALUES(id_viagem.NEXTVAL,"+obj.getCod_cliente()+","+obj.getCod_roteiro()+",TO_DATE('"+obj.getData_partida()+"','YYYY.MM.DD'),TO_DATE('"+obj.getData_chegada()+"','YYYY.MM.DD'),TO_DATE('"+datex.format(obj.getData_marcacao()).toString()+"','YYYY.MM.DD'))";
