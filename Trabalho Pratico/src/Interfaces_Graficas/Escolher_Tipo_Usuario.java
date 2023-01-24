@@ -201,9 +201,17 @@ public class Escolher_Tipo_Usuario extends javax.swing.JFrame implements Fontes{
     public void aboutUs()
     {
     	JOptionPane.showMessageDialog(null,"Bem-vindo à Agência de Viagens!\n"
-    			+ " Somos uma agência de viagens de serviço completo dedicada a ajudá-lo a planejar e reservar as férias dos seus sonhos.\r\n"
-    			+ " Quer esteja à procura de um pacote de férias com tudo incluído para uma família.\n"
-    			+ "A nossa agência de turismo foi criada para ajudar as pessoas a desfrutar de suas viagens e aproveitarem ao máximo cada momento. Trabalhamos com destinos em todo o mundo, oferecendo pacotes de viagem a preços acessíveis.\n"
-    			+ "Também oferecemos serviços personalizados para aqueles que querem uma experiência única e memorável. Nossos profissionais altamente qualificados irão guiá-lo por todos os detalhes da sua viagem para que você possa relaxar e desfrutar de suas férias.");
+    			+ "Somos uma agência de viagens de serviço completo dedicada a ajudá-lo a planejar e reservar as férias dos seus sonhos.\r\n"
+    			+ "Quer esteja à procura de um pacote de férias com tudo incluído para uma família.\n"
+    			+ "A nossa agência de turismo foi criada para ajudar as pessoas a desfrutar de suas viagens e aproveitarem ao máximo cada momento.\n"+""
+    			+ "Trabalhamos com destinos em todo o mundo, oferecendo pacotes de viagem a preços acessíveis.\n"
+    			+ "Também oferecemos serviços personalizados para aqueles que querem uma experiência única e memorável.\n"
+    			+ "Nossos profissionais altamente qualificados irão guiá-lo por todos os detalhes da sua viagem para que você possa relaxar e desfrutar de suas férias.\n"+""
+    			+ "\n Dados dos Programadores:\n"+""
+    			+ "Grupo 1 - Agencia de Turismo\r\n"
+    			+ "	Gilberto Botas Junior - 20210204\r\n"
+    			+ "	Dylan Cassamo - 20210640\r\n"
+    			+ "	Lindsay Nhancale - 20211073\r\n"
+    			+ "	Eugenio Castigo Junior - 20210089");
     }
 }
