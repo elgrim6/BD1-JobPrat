@@ -10,12 +10,10 @@ import Operacoes.Validacoes;
 public class Updates 
 {
 	private Queries q;
-	private Validacoes val;
 	
 	public Updates()
 	{
 		q=new Queries();
-		val=new Validacoes();
 	}
 	
 	//metodo para alterar estado da conta de um cliente
@@ -114,22 +112,6 @@ public class Updates
 		}
 		return true;
 	}
-	
-//	public void updateAllViagens()
-//	{
-//		ArrayList<Object> array=q.todasViagens();
-//		
-//		for(int a=0;a<array.size();a++)
-//		{
-//			Viagem v=(Viagem)array.get(a);
-//			if(!v.getStatus().equals("CANCELADA"))
-//			{
-//				String current_Status=val.validarStatus(v.getData_partida().toString(),v.getData_chegada().toString(),v.getStatus());
-//				updateViagem(v.getCod_viagem(),current_Status);
-//			}
-//			
-//		}
-//	}
 	
 	public boolean updateAllViagens()
 	{

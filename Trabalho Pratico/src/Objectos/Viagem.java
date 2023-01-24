@@ -87,6 +87,9 @@ public class Viagem
 	{
 		Queries q=new Queries();
 		
-		return q.getPrecoViagem(cod_roteiro);
+		if(status.equals("CANCELADO"))
+			return 0;
+		else
+			return q.getPrecoViagem(cod_roteiro);
 	}
 }

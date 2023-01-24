@@ -66,39 +66,6 @@ public class Validacoes
 	    return datamaior;
 	}
 	
-	//METODO PARA COMPARAR AS DUAS DATAS
-	public String validarStatus(String data1,String data2,String currentStatus)
-	{
-		SimpleDateFormat sdformat = new SimpleDateFormat("yyyy-MM-dd");
-		Date partida=null;
-		Date chegada=null;
-		Date hoje=new Date();
-		String status="";
-		
-		try
-		{
-			partida = sdformat.parse(data1);
-			chegada = sdformat.parse(data2);
-		}
-		catch(ParseException r) {}
-		
-		
-		if(!currentStatus.equals("CANCELADA"))
-		{
-			if(hoje.compareTo(partida)<0)
-				status="PENDENTE";
-			else
-			{
-				if(hoje.compareTo(chegada)<=0)
-					status="DECORRENDO";
-				else
-					status="TERMINADA";
-			}
-		}
-	   
-	    return status;
-	}
-	
 	//METODO PARA VALIDAR MES
 	public boolean validarMesDia(byte mes,byte dia,boolean bissexto)
 	{

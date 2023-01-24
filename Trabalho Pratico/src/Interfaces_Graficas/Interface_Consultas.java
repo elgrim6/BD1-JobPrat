@@ -9,6 +9,7 @@ public class Interface_Consultas extends javax.swing.JFrame {
      * Creates new form NewJFrame
      */
     public Interface_Consultas() {
+    	super("Consultas");
         initComponents();
         setVisible(true);
         setLocationRelativeTo(null);

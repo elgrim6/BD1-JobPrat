@@ -118,7 +118,8 @@ public class Visualizacoes_Alteracoes extends JFrame implements Fontes
 						new Visualizacoes('d');
 					}
 				});
-		cidade.setEnabled(restricao);
+		if(tipo_janela.equals("Alteracoes"))
+			cidade.setEnabled(false);
 		
 		//criacao do botao para voltar a janela anterior
 		voltar=new JButton("Voltar");

@@ -17,6 +17,7 @@ public class Calculos
 		
 		for(int a=0;a<array.size();a++)
 		{
+			
 			lucro+=((Viagem) array.get(a)).getPreco();
 		}
 		
