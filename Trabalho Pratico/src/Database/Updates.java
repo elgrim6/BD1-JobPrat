@@ -24,10 +24,10 @@ public class Updates
 	}
 	
 	//metodo para alterar dados do cliente
-	public static void alterarCliente(int cod_cliente,String x, String nome,String email,int n_cont,String status_c)
+	public static void alterarCliente(int cod_cliente,String nome,String email,String n_cont,String status_c)
 	{
-		String sql="UPDATE cliente SET nome='"+nome+"', email='"+email+"',"
-				+ "n_cont='"+n_cont+"',status_c='"+status_c+"' "
+		String sql="UPDATE cliente SET nome='"+nome+"', email='"+email+"', "
+				+ "n_cont='"+n_cont+"',status_cliente='"+status_c+"'\n"
 				+"WHERE cod_cliente="+cod_cliente+";";
 		
 		try

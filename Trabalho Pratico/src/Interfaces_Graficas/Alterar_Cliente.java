@@ -1,17 +1,24 @@
 package Interfaces_Graficas;
 
+import javax.swing.JOptionPane;
+
+import Database.Updates;
+
 public class Alterar_Cliente extends javax.swing.JFrame {
 
 	private int cod;
+	private Updates up;
     /**
      * Creates new form Alterar_Cliente
      */
     public Alterar_Cliente(int cod) {
-    	System.out.println("Bing bong entraste!");
+    	super("Alterar cliente");
         initComponents();
         this.cod=cod;
+        up=new Updates();
         setVisible(true);
         setLocationRelativeTo(null);
+        setResizable(false);
     }
 
     /**
@@ -32,6 +39,10 @@ public class Alterar_Cliente extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
+        radioGroup=new javax.swing.ButtonGroup();
+        radioGroup.add(jRadioButton1);
+        radioGroup.add(jRadioButton2);
+    	jRadioButton1.setSelected(true);
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -185,7 +196,7 @@ public class Alterar_Cliente extends javax.swing.JFrame {
     	jTextField1.setText("");
     	jTextField2.setText("");
     	jTextField3.setText("");
-    	jRadioButton1.setSelected(false);
+    	jRadioButton1.setSelected(true);
     	jRadioButton2.setSelected(false);
     } 
     
@@ -194,7 +205,21 @@ public class Alterar_Cliente extends javax.swing.JFrame {
     } 
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
+        String nome=jTextField1.getText();
+        String nr_cont=jTextField2.getText();
+        String email=jTextField3.getText();
+        String status="";
+        
+        if(jRadioButton1.isSelected())
+        	status=jRadioButton1.getText();
+        else
+        	status=jRadioButton1.getText();
+        
+        if(nome.equals("")||nr_cont.equals("")||email.equals("")||status.equals(""))
+        	JOptionPane.showMessageDialog(null,"Ha Campos Vazios, tente denovo","ERRO",JOptionPane.ERROR_MESSAGE);
+        else
+        	up.alterarCliente(cod, nome, email, nr_cont, status);
+        
     }                                        
 
     /**
@@ -215,5 +240,6 @@ public class Alterar_Cliente extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.ButtonGroup radioGroup;
     // End of variables declaration                   
 }

@@ -1,17 +1,24 @@
 package Interfaces_Graficas;
 
+import javax.swing.JOptionPane;
+
+import Database.Updates;
+
 public class Alterar_Viagem extends javax.swing.JFrame {
 
 	private int cod;
+	private Updates up;
     /**
      * Creates new form Alterar_Viagem
      */
     public Alterar_Viagem(int cod) {
-    	System.out.println("Bing bong entraste!");
+    	super("Alterar Viagem");
         initComponents();
         this.cod=cod;
+        up=new Updates();
         setVisible(true);
         setLocationRelativeTo(null);
+        setResizable(false);
     }
 
     /**
@@ -144,7 +151,30 @@ public class Alterar_Viagem extends javax.swing.JFrame {
 
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {                                            
         // TODO add your handling code here:
-    }                                           
+    }       
+    
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)
+    {
+    	int cod_cliente=0;
+    	int cod_roteiro=0;
+    	try
+    	{
+	        cod_cliente=Integer.parseInt(jTextField1.getText());
+	        cod_roteiro=Integer.parseInt(jTextField2.getText());
+    	}
+    	catch(NumberFormatException nfe) {
+    		JOptionPane.showMessageDialog(null,"Os codigos devem ser nulos!","ERRO",JOptionPane.ERROR_MESSAGE);
+    	}
+    	
+        String data_partida=jTextField3.getText();
+        String data_chegada=jTextField4.getText();
+        String data_marcacao=jTextField5.getText();
+        
+        if(cod_cliente==0||cod_roteiro==0||data_partida.equals("")||data_chegada.equals("")||data_marcacao.equals(""))
+        	JOptionPane.showMessageDialog(null,"Ha Campos Vazios, tente denovo","ERRO",JOptionPane.ERROR_MESSAGE);
+        else
+        	up.alterarViagem(cod, cod_cliente, cod_roteiro, data_partida, data_chegada, data_marcacao);
+    }
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
     	jTextField1.setText("");

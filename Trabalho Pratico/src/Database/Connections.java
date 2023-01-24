@@ -14,7 +14,7 @@ public class Connections
 		Connection con=null;
 		
 			try {
-				con= DriverManager.getConnection("jdbc:oracle:thin:@"+getIp()+":1521:xe","C##ADMIN","BD2isctem");
+				con= DriverManager.getConnection("jdbc:oracle:thin:@"+getIp()+":1521:xe","C##ADMIN","BD2.isctem");
 			} catch (SQLException e) {
 				System.out.println(e.getMessage());
 			}

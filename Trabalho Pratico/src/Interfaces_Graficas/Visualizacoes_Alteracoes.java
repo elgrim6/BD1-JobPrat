@@ -157,7 +157,7 @@ public class Visualizacoes_Alteracoes extends JFrame implements Fontes
 		
 		//definicoes da janela
 		setSize(1200,600);
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setVisible(true);
 	}

@@ -96,6 +96,7 @@ public class Interface_Cliente extends javax.swing.JFrame {
 							Updates.alterarEstado("INACTIVO",cod_cliente);
 							JOptionPane.showMessageDialog(null, "Usuario Desctivado!\nPara voltar a activar este usuario, por favor diriga-se");
 							dispose();
+							new Escolher_Tipo_Usuario();
 						}
 					}
         			
