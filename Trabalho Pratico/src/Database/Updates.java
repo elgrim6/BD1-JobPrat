@@ -141,7 +141,7 @@ public class Updates
 			{
 				Viagem v=(Viagem)array.get(a);
 				String sql="CALL STATUSVIAGEM("+v.getCod_viagem()+")";
-				ps.executeQuery(sql);
+				ps.execute(sql);
 			}
 		}
 		catch(SQLException s)

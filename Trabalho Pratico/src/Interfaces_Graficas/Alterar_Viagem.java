@@ -63,6 +63,11 @@ public class Alterar_Viagem extends javax.swing.JFrame {
         });
 
         jButton1.setText("Alterar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Limpar Campos");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -164,7 +169,7 @@ public class Alterar_Viagem extends javax.swing.JFrame {
 	        cod_roteiro=Integer.parseInt(jTextField2.getText());
     	}
     	catch(NumberFormatException nfe) {
-    		JOptionPane.showMessageDialog(null,"Os codigos devem ser nulos!","ERRO",JOptionPane.ERROR_MESSAGE);
+    		JOptionPane.showMessageDialog(null,"Os codigos devem ser numeros!","ERRO",JOptionPane.ERROR_MESSAGE);
     	}
     	
         String data_partida=jTextField3.getText();
@@ -177,7 +182,11 @@ public class Alterar_Viagem extends javax.swing.JFrame {
         	passou=up.alterarViagem(cod, cod_cliente, cod_roteiro, data_partida, data_chegada, data_marcacao);
         
         if(passou)
+        {
         	JOptionPane.showMessageDialog(null,"Operacao executadao com sucesso!","Mensagem",JOptionPane.PLAIN_MESSAGE);
+    		Updates up=new Updates();
+    		up.updateAllViagens();
+        }
     }
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
