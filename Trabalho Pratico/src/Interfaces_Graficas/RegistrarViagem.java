@@ -109,11 +109,17 @@ public class RegistrarViagem extends javax.swing.JFrame {
 						long millis = System.currentTimeMillis();
 						Date data_marcacao=new Date(millis);
 						
-						Viagem a=new Viagem(0,cod_roteiro,cod_cliente,data_partida,data_chegada,data_marcacao,"PENDENTE");
-						boolean passou=Inserts.inserirViagem(a);
-						
-						if(passou==true)
-							JOptionPane.showMessageDialog(null, "Operacao Sucedida!");
+						Cliente c=(Cliente)cq.umClientes(cod_cliente);
+						if(c.getStatus().equals("ACTIVO"))
+						{
+							Viagem a=new Viagem(0,cod_roteiro,cod_cliente,data_partida,data_chegada,data_marcacao,"PENDENTE");
+							boolean passou=Inserts.inserirViagem(a);
+							
+							if(passou==true)
+								JOptionPane.showMessageDialog(null, "Operacao Sucedida!");
+						}
+						else
+							JOptionPane.showMessageDialog(null,"O cliente se encontra inactivo!","ERRO",JOptionPane.ERROR_MESSAGE);
 					}
 				}
         		
