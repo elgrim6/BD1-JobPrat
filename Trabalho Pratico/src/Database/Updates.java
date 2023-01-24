@@ -69,4 +69,20 @@ public class Updates
 		
 		return true;
 	}
+	
+	public void cancelarViagem(int cod)
+	{
+		String sql="UPDATE viagem SET status='CANCELADO' where cod_viagem"+cod;
+		
+		try
+		{
+			var ps=Connections.getConexao().createStatement(); 
+			
+			ps.executeQuery(sql);
+		}
+		catch(SQLException s)
+		{
+			JOptionPane.showMessageDialog(null,s.getMessage(),"ERRO",JOptionPane.ERROR_MESSAGE);
+		}
+	}
 }
