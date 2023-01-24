@@ -1,6 +1,3 @@
-import java.util.ArrayList;
-import Objectos.Cliente;
-import Database.*;
 import Interfaces_Graficas.Escolher_Tipo_Usuario;
 /*
 	Grupo 1 - Agencia de Turismo
