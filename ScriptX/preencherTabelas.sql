@@ -92,33 +92,33 @@ INSERT INTO Roteiro
 rem ====================================================================================================================================================================================================================================
 
 INSERT INTO VIAGEM
-    VALUES(id_viagem.NEXTVAL,1,1,'2021.04.14','2021.04.28','2021.01.31');
+    VALUES(id_viagem.NEXTVAL,1,1,'2021.04.14','2021.04.28','2021.01.31','PENDENTE');
 INSERT INTO VIAGEM
-    VALUES(id_viagem.NEXTVAL,2,2,'2023.01.01','2023.02.26','2022.12.20');
+    VALUES(id_viagem.NEXTVAL,2,2,'2023.01.01','2023.02.26','2022.12.20','PENDENTE');
 INSERT INTO VIAGEM
-    VALUES(id_viagem.NEXTVAL,2,3,'2021.03.28','2021.04.13','2021.02.20');
+    VALUES(id_viagem.NEXTVAL,2,3,'2021.03.28','2021.04.13','2021.02.20','PENDENTE');
 INSERT INTO VIAGEM
-    VALUES(id_viagem.NEXTVAL,3,4,'2021.12.19','2022.01.16','2021.10.25');
+    VALUES(id_viagem.NEXTVAL,3,4,'2021.12.19','2022.01.16','2021.10.25','PENDENTE');
 INSERT INTO VIAGEM
-    VALUES(id_viagem.NEXTVAL,3,5,'2020.07.30','2020.09.29','2020.04.30');
+    VALUES(id_viagem.NEXTVAL,3,5,'2020.07.30','2020.09.29','2020.04.30','PENDENTE');
 INSERT INTO VIAGEM
-    VALUES(id_viagem.NEXTVAL,4,5 ,'2023.01.04','2023.02.22','2022.12.02');
+    VALUES(id_viagem.NEXTVAL,4,5 ,'2023.01.04','2023.02.22','2022.12.02','PENDENTE');
 INSERT INTO VIAGEM
-    VALUES(id_viagem.NEXTVAL,4,1,'2019.06.04','2019.08.12','2019.04.20');
+    VALUES(id_viagem.NEXTVAL,4,1,'2019.06.04','2019.08.12','2019.04.20','PENDENTE');
 INSERT INTO VIAGEM
-    VALUES(id_viagem.NEXTVAL,4,1,'2022.06.04','2022.06.30','2022.04.25');
+    VALUES(id_viagem.NEXTVAL,4,1,'2022.06.04','2022.06.30','2022.04.25','PENDENTE');
 INSERT INTO VIAGEM
-    VALUES(id_viagem.NEXTVAL,5,2,'2022.06.04','2022.06.30','2022.04.12');
+    VALUES(id_viagem.NEXTVAL,5,2,'2022.06.04','2022.06.30','2022.04.12','PENDENTE');
 INSERT INTO VIAGEM
-    VALUES(id_viagem.NEXTVAL,6,2,'2022.12.04','2023.02.23','2022.07.01');
+    VALUES(id_viagem.NEXTVAL,6,2,'2022.12.04','2023.02.23','2022.07.01','PENDENTE');
 INSERT INTO VIAGEM
-    VALUES(id_viagem.NEXTVAL,7,3,'2021.09.24','2021.12.24','2021.05.26');
+    VALUES(id_viagem.NEXTVAL,7,3,'2021.09.24','2021.12.24','2021.05.26','PENDENTE');
 INSERT INTO VIAGEM
-    VALUES(id_viagem.NEXTVAL,8,4,'2018.06.04','2018.08.04','2018.05.16');
+    VALUES(id_viagem.NEXTVAL,8,4,'2018.06.04','2018.08.04','2018.05.16','PENDENTE');
 INSERT INTO VIAGEM
-    VALUES(id_viagem.NEXTVAL,9,4,'2018.06.04','2018.08.04','2018.05.16');
+    VALUES(id_viagem.NEXTVAL,9,4,'2018.06.04','2018.08.04','2018.05.16','PENDENTE');
 INSERT INTO VIAGEM
-    VALUES(id_viagem.NEXTVAL,10,4,'2018.06.04','2018.08.04','2018.05.16');
+    VALUES(id_viagem.NEXTVAL,10,4,'2018.06.04','2018.08.04','2018.05.16','PENDENTE');
 
 rem ====================================================================================================================================================================================================================================
 

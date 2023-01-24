@@ -17,6 +17,7 @@ public class Escolher_Tipo_Usuario extends javax.swing.JFrame implements Fontes{
      * Creates new form NewJFrame
      */
     public Escolher_Tipo_Usuario() {
+    	super("Bem Vindo");
         initComponents();
         setLocationRelativeTo(null);
         setResizable(false);

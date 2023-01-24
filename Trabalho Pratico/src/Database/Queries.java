@@ -156,8 +156,9 @@ public class Queries
 				String data_partida=rs.getString(4);
 				String data_chegada=rs.getString(5);
 				Date data_marcacao=rs.getDate(6);
+				String status=rs.getString(7);
 				
-				array.add(new Viagem(cod_viagem,cod_cliente,cod_roteiro,data_partida,data_chegada,data_marcacao));
+				array.add(new Viagem(cod_viagem,cod_cliente,cod_roteiro,data_partida,data_chegada,data_marcacao,status));
 			}
 		}
 		catch(SQLException s)
@@ -279,7 +280,7 @@ public class Queries
 	//metodo para retornar o cliente que fez a viagem mais longa
 	public ArrayList<Object> viagem_mais_longa()
 	{
-		String sql="select cod_cliente,nome,cod_viagem, duracao from viagem_duracao where (duracao=(select max(duracao) from viagem_duracao))";
+		String sql="select cod_cliente,nome,cod_viagem, duracao from viagem_duracao where (duracao=(select max(duracao) from viagem_duracao) )";
 		Viagem_Duracao vd;
 		ArrayList<Object> array=new ArrayList<>();
 		
@@ -328,8 +329,9 @@ public class Queries
 					String data_partida=rs.getString(4);
 					String data_chegada=rs.getString(5);
 					Date data_marcacao=rs.getDate(6);
+					String status=rs.getString(7);
 					
-					array.add(new Viagem(cod_viagem,cod_cliente,cod_roteiro,data_partida,data_chegada,data_marcacao));
+					array.add(new Viagem(cod_viagem,cod_cliente,cod_roteiro,data_partida,data_chegada,data_marcacao,status));
 				}
 			}
 			catch(SQLException s)
@@ -341,17 +343,17 @@ public class Queries
 		}
 	
 	//metodo para devolver o preco da viajem recebendo o cod da viagem
-	public float getPrecoViagem(int cod_viagem)
+	public float getPrecoViagem(int cod_roteiro)
 	{
 		float preco=0;
 			
-		String sql="select r.preco from viagem v,roteiro r Where v.cod_roteiro=r.cod_roteiro and v.cod_viagem=?";
+		String sql="SELECT SUM(custo) FROM ligacao_roteiro lr,ligacao l WHERE (lr.cod_cidade=l.cod_cidade AND lr.cod_cidade1=l.cod_cidade1) AND lr.cod_roteiro=?";
 		ArrayList<Cidade> array=new ArrayList<>();
 			
 		try
 		{
 			PreparedStatement ps=Connections.getConexao().prepareStatement(sql);
-			ps.setInt(1,cod_viagem);
+			ps.setInt(1,cod_roteiro);
 			ResultSet rs=ps.executeQuery();
 			rs.next();
 			preco=rs.getFloat(1);

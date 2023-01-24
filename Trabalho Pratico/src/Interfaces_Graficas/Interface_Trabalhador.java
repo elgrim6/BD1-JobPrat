@@ -9,7 +9,7 @@ import java.awt.event.*;
 public class Interface_Trabalhador extends JFrame implements Fontes
 {
 	private Container cont; //janela
-	private JButton criar_cliente,marcar_viagem,cancel_viagem,vis,alt,logout,consultas; //botoes
+	private JButton criar_cliente,marcar_viagem,cancel_viagem,vis,alt,logout,consultas,lucro; //botoes
 	private JPanel panel_botoes; //painel de botoes
 	
 	public Interface_Trabalhador(boolean restricao,String tipo)
@@ -49,6 +49,7 @@ public class Interface_Trabalhador extends JFrame implements Fontes
 						new Interface_Consultas();
 					}
 				});
+		consultas.setEnabled(restricao);
 		
 		//criacao do botao para marcar uma viagem
 		marcar_viagem=new JButton("Marcar Viagem");
@@ -131,6 +132,20 @@ public class Interface_Trabalhador extends JFrame implements Fontes
 						new Escolher_Tipo_Usuario();
 					}
 				});
+		lucro=new JButton("Lucro Adquirido");
+		lucro.setIcon(new ImageIcon(".\\Icons\\profit.png"));
+		lucro.setFont(fontButton);
+		lucro.setBackground(Color.lightGray);
+		lucro.addActionListener(
+				new ActionListener()
+				{
+					public void actionPerformed(ActionEvent e)
+					{
+						new Valor_Obtido();
+					}
+				});
+		lucro.setEnabled(restricao);
+		
 		
 		//preenchimento do painel
 		panel_botoes.add(criar_cliente);
@@ -139,6 +154,7 @@ public class Interface_Trabalhador extends JFrame implements Fontes
 		panel_botoes.add(vis);
 		panel_botoes.add(alt);
 		panel_botoes.add(consultas);
+		panel_botoes.add(lucro);
 		panel_botoes.add(logout);
 		
 		
@@ -146,7 +162,7 @@ public class Interface_Trabalhador extends JFrame implements Fontes
 		cont.add(panel_botoes);
 		
 		//definicoes da janela
-		setSize(1200,600);
+		setSize(1300,600);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setVisible(true);

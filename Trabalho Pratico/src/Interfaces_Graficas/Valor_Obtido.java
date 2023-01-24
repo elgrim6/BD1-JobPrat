@@ -66,9 +66,4 @@ public class Valor_Obtido extends JFrame implements Fontes
 		setLocationRelativeTo(null);
 		setVisible(true);
 	}
-	
-	public static void main(String[] args)
-	{
-		new Valor_Obtido();
-	}
 }

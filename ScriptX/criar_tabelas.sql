@@ -51,6 +51,7 @@ CREATE TABLE VIAGEM (
     data_partida	    DATE NULL,
 	data_chegada        DATE NULL,
 	data_marcacao       DATE NULL,
+	status				VARCHAR(10) NOT NULL CHECK(status='PENDENTE' OR status='DECORRENDO' OR status='CANCELADA' OR status='TERMINADA'),
     PRIMARY KEY (cod_viagem)
 );
 CREATE TABLE LIGACAO(

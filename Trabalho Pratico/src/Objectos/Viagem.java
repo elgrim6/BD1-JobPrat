@@ -9,17 +9,28 @@ public class Viagem
 {
 	SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.mm.yyyy");
 	private int cod_viagem,cod_cliente,cod_roteiro;
-	private String data_partida,data_chegada;
+	private String data_partida,data_chegada,status;
 	private Date data_marcacao;
 	
 	public Viagem(int cod_viagem, int cod_cliente, int cod_roteiro, String data_partida, String data_chegada,
-			Date data_marcacao) {
+			Date data_marcacao,String status) {
 		this.cod_viagem = cod_viagem;
 		this.cod_cliente = cod_cliente;
 		this.cod_roteiro = cod_roteiro;
 		this.data_partida = data_partida;
 		this.data_chegada = data_chegada;
 		this.data_marcacao = data_marcacao;
+		this.status=status;
+	}
+
+
+	public String getStatus() {
+		return status;
+	}
+
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 
@@ -76,13 +87,6 @@ public class Viagem
 	{
 		Queries q=new Queries();
 		
-		return q.getPrecoViagem(cod_viagem);
-	}
-
-	@Override
-	public String toString() {
-		return "Viagem [cod_viagem=" + cod_viagem + ", cod_cliente=" + cod_cliente + ", cod_roteiro=" + cod_roteiro
-				+ ", data_partida=" + data_partida + ", data_chegada=" + data_chegada + ", data_marcacao="
-				+ data_marcacao + "]";
+		return q.getPrecoViagem(cod_roteiro);
 	}
 }

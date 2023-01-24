@@ -75,14 +75,14 @@ public class Alterar_Cliente extends javax.swing.JFrame {
 
         jLabel4.setText("Estado:");
 
-        jRadioButton1.setText("Activo");
+        jRadioButton1.setText("ACTIVO");
         jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton1ActionPerformed(evt);
             }
         });
 
-        jRadioButton2.setText("Inactivo");
+        jRadioButton2.setText("INACTIVO");
 
         jButton1.setText("Alterar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -209,6 +209,7 @@ public class Alterar_Cliente extends javax.swing.JFrame {
         String nr_cont=jTextField2.getText();
         String email=jTextField3.getText();
         String status="";
+        boolean passou=false;
         
         if(jRadioButton1.isSelected())
         	status=jRadioButton1.getText();
@@ -218,7 +219,10 @@ public class Alterar_Cliente extends javax.swing.JFrame {
         if(nome.equals("")||nr_cont.equals("")||email.equals("")||status.equals(""))
         	JOptionPane.showMessageDialog(null,"Ha Campos Vazios, tente denovo","ERRO",JOptionPane.ERROR_MESSAGE);
         else
-        	up.alterarCliente(cod, nome, email, nr_cont, status);
+        	passou=up.alterarCliente(cod, nome, email, nr_cont, status);
+        
+        if(passou)
+        	JOptionPane.showMessageDialog(null,"Operacao executadao com sucesso!","Mensagem",JOptionPane.PLAIN_MESSAGE);
         
     }                                        
 

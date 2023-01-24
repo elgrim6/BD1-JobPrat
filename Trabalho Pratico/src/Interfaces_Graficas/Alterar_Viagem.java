@@ -157,6 +157,7 @@ public class Alterar_Viagem extends javax.swing.JFrame {
     {
     	int cod_cliente=0;
     	int cod_roteiro=0;
+    	boolean passou=false;
     	try
     	{
 	        cod_cliente=Integer.parseInt(jTextField1.getText());
@@ -173,7 +174,10 @@ public class Alterar_Viagem extends javax.swing.JFrame {
         if(cod_cliente==0||cod_roteiro==0||data_partida.equals("")||data_chegada.equals("")||data_marcacao.equals(""))
         	JOptionPane.showMessageDialog(null,"Ha Campos Vazios, tente denovo","ERRO",JOptionPane.ERROR_MESSAGE);
         else
-        	up.alterarViagem(cod, cod_cliente, cod_roteiro, data_partida, data_chegada, data_marcacao);
+        	passou=up.alterarViagem(cod, cod_cliente, cod_roteiro, data_partida, data_chegada, data_marcacao);
+        
+        if(passou)
+        	JOptionPane.showMessageDialog(null,"Operacao executadao com sucesso!","Mensagem",JOptionPane.PLAIN_MESSAGE);
     }
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         

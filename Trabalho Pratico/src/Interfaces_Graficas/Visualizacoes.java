@@ -18,7 +18,7 @@ public class Visualizacoes extends JFrame implements Fontes
 	//titulos da tabela
 	private String [] header;
 	private String [] titulosCliente= {"Codigo","Nome","Email","Nr de Contribuinte","Status"}; 
-	private String [] titulosViagem= {"Codigo","Cliente","Roteiro","Data de Partida","Data de Chegada","Data de Marcacao"};
+	private String [] titulosViagem= {"Codigo","Cliente","Roteiro","Data de Partida","Data de Chegada","Data de Marcacao","Status"};
 	private String [] titulosCidade= {"Codigo","Nome"};
 	private String [] titulosRoteiro= {"Codigo","Cidade de Partida","Cidade de Destino"};
 	private String [] titulosConsultaDylan= {"Codigo do Cliente","Nome do Cliente","Codigo da Viagem","Duracao(Dias)"};
@@ -167,6 +167,7 @@ public class Visualizacoes extends JFrame implements Fontes
 					x[i][3]=vg.getData_partida().substring(0,10);
 					x[i][4]=vg.getData_chegada().substring(0,10);
 					x[i][5]=vg.getData_marcacao()+"";
+					x[i][6]=vg.getStatus();
 				}break;
 				case 'd':
 				{
