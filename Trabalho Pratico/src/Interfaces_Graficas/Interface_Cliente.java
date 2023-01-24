@@ -176,7 +176,7 @@ public class Interface_Cliente extends javax.swing.JFrame {
 
     
 		
-		String [] titulos= {"Codigo","Roteiro","Data de Partida","Data de Chegada","Data de Marcacao"};
+		String [] titulos= {"Codigo","Roteiro","Data de Partida","Data de Chegada","Data de Marcacao","Status"};
 		
 		String[][] x=new String[array.size()][titulos.length];
 		
@@ -188,6 +188,7 @@ public class Interface_Cliente extends javax.swing.JFrame {
 			x[i][2]=vg.getData_partida()+"";
 			x[i][3]=vg.getData_chegada()+"";
 			x[i][4]=vg.getData_marcacao()+"";	
+			x[i][5]=vg.getStatus();
 		}
 		
 		table=new JTable(x,titulos);
