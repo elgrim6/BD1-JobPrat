@@ -177,7 +177,6 @@ public class Interface_Cliente extends javax.swing.JFrame {
     
 		
 		String [] titulos= {"Codigo","Roteiro","Data de Partida","Data de Chegada","Data de Marcacao","Status"};
-		
 		String[][] x=new String[array.size()][titulos.length];
 		
 		for(int i=0;i<array.size();i++)

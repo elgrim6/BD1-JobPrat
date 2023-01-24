@@ -1,6 +1,8 @@
 package Interfaces_Graficas;
 import javax.swing.*;
 
+import Database.Queries;
+import Database.Updates;
 import Interfaces.Fontes;
 import Objectos.Viagem;
 
@@ -11,11 +13,15 @@ public class Interface_Trabalhador extends JFrame implements Fontes
 	private Container cont; //janela
 	private JButton criar_cliente,marcar_viagem,cancel_viagem,vis,alt,logout,consultas,lucro; //botoes
 	private JPanel panel_botoes; //painel de botoes
+	private Queries q;
+	private Updates up;
 	
 	public Interface_Trabalhador(boolean restricao,String tipo)
 	{
 		//titulo da janela
 		super("Bem Vindo "+tipo);
+		q=new Queries();
+		up=new Updates();
 		
 		//criacao da janela
 		cont=getContentPane();
@@ -75,7 +81,25 @@ public class Interface_Trabalhador extends JFrame implements Fontes
 				{
 					public void actionPerformed(ActionEvent e)
 					{
-						//entrar na interface para cancelar uma viagem
+						int cod=0;
+						
+						try
+						{
+							cod=Integer.parseInt(JOptionPane.showInputDialog("Insere o codigo da viagem que pretender cancelar"));
+						}
+						catch(NumberFormatException nfe) {}
+							
+						if(cod!=0)
+						{
+							if(q.existeRegistro("Viagem",cod))
+							{
+								boolean passou=up.cancelarViagem(cod);
+								if(passou)
+									JOptionPane.showMessageDialog(null,"Operacao executada com sucesso!","MENSAGEM",JOptionPane.PLAIN_MESSAGE);
+							}
+							else
+								JOptionPane.showMessageDialog(null,"Erro! Codigo nao existe!","ERRO",JOptionPane.ERROR_MESSAGE);
+						}
 					}
 				});
 		

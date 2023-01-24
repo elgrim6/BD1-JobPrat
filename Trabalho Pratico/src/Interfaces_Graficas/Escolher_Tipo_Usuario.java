@@ -9,6 +9,7 @@ import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
+import Database.Updates;
 import Interfaces.Fontes;
 
 public class Escolher_Tipo_Usuario extends javax.swing.JFrame implements Fontes{

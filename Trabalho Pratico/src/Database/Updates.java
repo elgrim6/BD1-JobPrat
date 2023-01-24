@@ -5,9 +5,18 @@ import java.util.*;
 import javax.swing.JOptionPane;
 
 import Objectos.*;
+import Operacoes.Validacoes;
 
 public class Updates 
 {
+	private Queries q;
+	private Validacoes val;
+	
+	public Updates()
+	{
+		q=new Queries();
+		val=new Validacoes();
+	}
 	
 	//metodo para alterar estado da conta de um cliente
 	public static void alterarEstado(String x, int cod)
@@ -70,9 +79,9 @@ public class Updates
 		return true;
 	}
 	
-	public void cancelarViagem(int cod)
+	public boolean cancelarViagem(int cod)
 	{
-		String sql="UPDATE viagem SET status='CANCELADO' where cod_viagem"+cod;
+		String sql="UPDATE viagem SET status='CANCELADA' where cod_viagem="+cod;
 		
 		try
 		{
@@ -83,6 +92,63 @@ public class Updates
 		catch(SQLException s)
 		{
 			JOptionPane.showMessageDialog(null,s.getMessage(),"ERRO",JOptionPane.ERROR_MESSAGE);
+			return false;
 		}
+		return true;
+	}
+	
+	public boolean updateViagem(int cod,String status)
+	{
+		String sql="UPDATE viagem SET status='"+status+"' where cod_viagem="+cod;
+		
+		try
+		{
+			var ps=Connections.getConexao().createStatement(); 
+			
+			ps.executeQuery(sql);
+		}
+		catch(SQLException s)
+		{
+			JOptionPane.showMessageDialog(null,s.getMessage(),"ERRO",JOptionPane.ERROR_MESSAGE);
+			return false;
+		}
+		return true;
+	}
+	
+//	public void updateAllViagens()
+//	{
+//		ArrayList<Object> array=q.todasViagens();
+//		
+//		for(int a=0;a<array.size();a++)
+//		{
+//			Viagem v=(Viagem)array.get(a);
+//			if(!v.getStatus().equals("CANCELADA"))
+//			{
+//				String current_Status=val.validarStatus(v.getData_partida().toString(),v.getData_chegada().toString(),v.getStatus());
+//				updateViagem(v.getCod_viagem(),current_Status);
+//			}
+//			
+//		}
+//	}
+	
+	public boolean updateAllViagens()
+	{
+		ArrayList<Object> array=q.todasViagens();
+		try
+		{
+			var ps=Connections.getConexao().createStatement(); 
+			for(int a=0;a<array.size();a++)
+			{
+				Viagem v=(Viagem)array.get(a);
+				String sql="CALL STATUSVIAGEM("+v.getCod_viagem()+")";
+				ps.executeQuery(sql);
+			}
+		}
+		catch(SQLException s)
+		{
+			JOptionPane.showMessageDialog(null,s.getMessage(),"ERRO",JOptionPane.ERROR_MESSAGE);
+			return false;
+		}
+		return true;
 	}
 }
